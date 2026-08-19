@@ -57,6 +57,7 @@ a:hover{color:#7cd0ff}
 /* display type: Roboto, widened, so the family stays but the voice changes */
 h1,h2,h3,.hs-title{
   font-family:var(--display);font-weight:700;
+  text-transform:capitalize;
   font-variation-settings:"wdth" 130;
   letter-spacing:-.015em;line-height:1.06;margin:0;
   text-wrap:balance;
@@ -180,6 +181,7 @@ p{margin:0}
 
 .band h1,.band .line{
   font-family:var(--display);font-weight:700;font-variation-settings:"wdth" 128;
+  text-transform:capitalize;
   font-size:clamp(2.1rem,5.4vw,4.3rem);line-height:1.04;letter-spacing:-.02em;
   max-width:19ch;margin:0}
 .band-settle .line-xl{font-size:clamp(2.6rem,7.4vw,6rem);max-width:14ch}
@@ -219,7 +221,7 @@ p{margin:0}
 
 /* ---------- shared section furniture ---------- */
 main{position:relative;z-index:2;background:var(--canvas)}
-section{padding-block:clamp(5rem,11vw,9rem);position:relative}
+section{padding-block:clamp(3rem,6vw,5.25rem);position:relative}
 .sec-head{width:var(--wrap);margin-inline:auto;max-width:74ch}
 section > .cov-grid,section > .cust-grid,section > .mod-grid,section > .chain-list,section > .trust,
 section > .who-grid,.scan-stage{width:var(--wrap);margin-inline:auto}
@@ -240,7 +242,7 @@ section > .who-grid,.scan-stage{width:var(--wrap);margin-inline:auto}
 .stat-l{color:var(--text-2);font-size:.94rem;margin-top:.7rem;max-width:26ch}
 
 /* 6.2 coverage: three columns, hairline dividers, no cards */
-.cov-grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:3.4rem}
+.cov-grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:2.4rem}
 .cov{padding:2rem 1.8rem 2rem 0;border-top:1px solid var(--panel-line)}
 .cov + .cov{padding-left:1.8rem;border-left:1px solid var(--panel-line)}
 .cov h3{margin-bottom:1rem}
@@ -252,7 +254,7 @@ section > .who-grid,.scan-stage{width:var(--wrap);margin-inline:auto}
 .cov-ours::after{content:"";position:absolute;left:1.8rem;right:0;top:-1px;height:2px;background:var(--signal)}
 
 /* 6.3 customers: asymmetric, one hero card + two */
-.cust-grid{display:grid;gap:1.4rem;grid-template-columns:1fr 1fr;margin-top:3.4rem}
+.cust-grid{display:grid;gap:1.4rem;grid-template-columns:1fr 1fr;margin-top:2.4rem}
 .cust-hero{grid-column:1/-1}
 .cust{background:var(--panel-2);border:1px solid var(--panel-line);border-radius:4px;overflow:hidden;
   transition:border-color .5s var(--ease)}
@@ -288,7 +290,7 @@ section > .who-grid,.scan-stage{width:var(--wrap);margin-inline:auto}
   opacity:calc(clamp(0,(var(--p,0) - .92)*12,1));transition:opacity .4s var(--ease)}
 
 /* 6.5 platform: numbered media cards, different skeleton to 6.4 */
-.mod-grid{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:3.4rem}
+.mod-grid{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:2.4rem}
 .mod{background:var(--panel-2);border:1px solid var(--panel-line);border-radius:4px;padding:0 0 1.6rem;
   overflow:hidden}
 .mod-shot{aspect-ratio:16/10;background:var(--panel);border-bottom:1px solid var(--panel-line);overflow:hidden}
@@ -299,7 +301,7 @@ section > .who-grid,.scan-stage{width:var(--wrap);margin-inline:auto}
 
 /* 6.6 the alert chain: a vertical timeline, nothing like the grid above */
 .chain{overflow:hidden}
-.chain-list{list-style:none;margin:3.4rem auto 0;padding:0;position:relative;max-width:820px}
+.chain-list{list-style:none;margin:2.4rem auto 0;padding:0;position:relative;max-width:820px}
 .chain-list li{position:relative;padding:0 0 2.6rem 4.2rem}
 .chain-list li::before{content:"";position:absolute;left:11px;top:.55em;width:9px;height:9px;border-radius:50%;
   background:var(--canvas);border:2px solid var(--signal)}
@@ -311,7 +313,7 @@ section > .who-grid,.scan-stage{width:var(--wrap);margin-inline:auto}
 .chain-line path{stroke-dasharray:800;stroke-dashoffset:calc(800 - 800*var(--draw,0))}
 
 /* 6.7 who: a plain list of rules, no cards at all */
-.who-grid{list-style:none;margin:3.4rem auto 0;padding:0;display:grid;gap:0;
+.who-grid{list-style:none;margin:2.4rem auto 0;padding:0;display:grid;gap:0;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 .who-grid li{padding:1.7rem 1.6rem 1.7rem 0;border-top:1px solid var(--panel-line)}
 .who-grid p{color:var(--text-2);font-size:.95rem;margin-top:.4rem}
@@ -353,7 +355,7 @@ section > .who-grid,.scan-stage{width:var(--wrap);margin-inline:auto}
 .foot-note{color:var(--text-2);font-size:.92rem;margin-top:1rem;max-width:34ch}
 .foot h4{color:var(--signal);margin:0 0 .9rem}
 .foot p{color:var(--text-2);font-size:.95rem}
-.foot-legal{width:var(--wrap);margin:3rem auto 0;color:#5c6d85;text-transform:none;letter-spacing:.04em}
+.foot-legal{width:var(--wrap);margin:2.2rem auto 0;color:#5c6d85;text-transform:none;letter-spacing:.04em}
 
 /* ---------- short screens: the small overlays have no room ---------- */
 @media (max-height:560px){.hud,.cue,.ring{display:none}}
@@ -400,7 +402,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .foot img{height:auto;width:190px}
 
 /* the customer trust row: type lockups now, official logo files when they land */
-.trust{list-style:none;margin:3rem auto 0;padding:0;display:grid;gap:1px;
+.trust{list-style:none;margin:2.2rem auto 0;padding:0;display:grid;gap:1px;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   background:var(--panel-line);border:1px solid var(--panel-line);border-radius:4px;overflow:hidden}
 .trust-item{background:var(--panel-2);display:flex;align-items:center;justify-content:center;
@@ -425,3 +427,25 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   color:var(--text);font-size:clamp(1rem,1.5vw,1.18rem)}
 .bleed-cap{display:block;max-width:64ch}
 .bleed figcaption .mono{display:block;color:var(--signal);margin-bottom:.7rem}
+
+/* WhatsApp chat button. Collapses to a circle on small screens so it never
+   sits on top of the content, and gets out of the way on short viewports. */
+.wa{position:fixed;right:max(1rem,3vw);bottom:max(1rem,3vh);z-index:90;
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.7rem 1.1rem .7rem .85rem;border-radius:999px;
+  background:#1f9d55;color:#fff;font-family:var(--mono);font-size:.72rem;
+  font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  box-shadow:0 6px 26px rgba(0,0,0,.42);
+  transition:transform .35s var(--ease),background .35s var(--ease)}
+.wa:hover{background:#25b364;color:#fff;transform:translateY(-2px)}
+.wa svg{width:22px;height:22px;flex:none}
+@media (max-width:720px){
+  .wa{padding:.85rem;gap:0}
+  .wa-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+}
+@media (max-height:520px){.wa{display:none}}
+
+/* Title Case is for headings only. Mono labels are already uppercase, and the
+   readouts must keep their exact casing. */
+.mono,.btn,.hud span,.scan-readout,.foot-legal,.brand-word{text-transform:uppercase}
+.stat-n,.mod-cap{text-transform:none}
