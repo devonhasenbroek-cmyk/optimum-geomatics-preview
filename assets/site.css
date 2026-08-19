@@ -1,0 +1,427 @@
+/* Self-hosted fonts. Google Fonts cost two extra hosts (fonts.googleapis.com then
+   fonts.gstatic.com), each with its own DNS, TCP and TLS handshake, and the
+   stylesheet was render-blocking. On a high-latency link that was ~700ms of dead
+   time before a single word could paint. Same-origin, 132 KB, latin only. */
+@font-face{font-family:'Roboto Flex';font-style:normal;font-weight:600 800;
+  font-stretch:100% 150%;font-display:swap;
+  src:url('fonts/robotoflex-latin.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-style:normal;font-weight:400 500;font-display:swap;
+  src:url('fonts/roboto-latin.woff2') format('woff2')}
+@font-face{font-family:'Roboto Mono';font-style:normal;font-weight:400 500;font-display:swap;
+  src:url('fonts/robotomono-latin.woff2') format('woff2')}
+
+/* Optimum Geomatics
+   Palette sampled from the hero footage: orbital indigo, cyan airglow, ember fire line.
+   Cyan is the eye. Ember is the heat. */
+
+:root{
+  --canvas:#080d18;
+  --canvas-deep:#050912;
+  --panel:#101827;
+  --panel-2:#0c1320;
+  --panel-line:#1e2c42;
+  --border-int:#3a5478;
+  --accent:#ff6b2c;
+  --accent-hover:#ff8449;
+  --accent-muted:rgba(255,107,44,.16);
+  --signal:#38b6ff;
+  --signal-dim:rgba(56,182,255,.42);
+  --signal-muted:rgba(56,182,255,.16);
+  --text:#eef3fa;
+  --text-2:#9fb0c8;
+  --tshadow:0 1px 2px rgba(4,6,12,.95),0 3px 12px rgba(4,6,12,.8),0 10px 44px rgba(4,6,12,.82);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-soft:cubic-bezier(.4,0,.2,1);
+  --wrap:min(1180px,92vw);
+  --display:"Roboto Flex","Roboto",system-ui,sans-serif;
+  --body:"Roboto",system-ui,sans-serif;
+  --mono:"Roboto Mono",ui-monospace,monospace;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{overflow-x:hidden;overflow-x:clip}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--canvas);color:var(--text);
+  font-family:var(--body);font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--signal);text-decoration:none}
+a:hover{color:#7cd0ff}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:4px}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--panel);color:var(--text);padding:.7rem 1.1rem;border-radius:0 0 8px 0}
+.skip:focus{left:0}
+
+/* display type: Roboto, widened, so the family stays but the voice changes */
+h1,h2,h3,.hs-title{
+  font-family:var(--display);font-weight:700;
+  font-variation-settings:"wdth" 130;
+  letter-spacing:-.015em;line-height:1.06;margin:0;
+  text-wrap:balance;
+}
+h2{font-size:clamp(2rem,4.4vw,3.4rem)}
+h3{font-size:clamp(1.15rem,1.7vw,1.4rem);font-variation-settings:"wdth" 118;line-height:1.2}
+p{margin:0}
+.mono{font-family:var(--mono);font-weight:500;letter-spacing:.12em;text-transform:uppercase;font-size:.72rem}
+.kicker{color:var(--signal);margin-bottom:1rem}
+.lede{color:var(--text-2);font-size:clamp(1.02rem,1.5vw,1.2rem);max-width:62ch;margin-top:1.1rem}
+
+/* ---------- the one fixed background environment ---------- */
+.env{position:fixed;inset:0;z-index:0;pointer-events:none;background:var(--canvas-deep)}
+.graticule{position:absolute;inset:-6%;width:112%;height:112%;color:var(--signal);opacity:.06;
+  animation:grat 110s linear infinite}
+.grat-lines path{fill:none;stroke:currentColor;stroke-width:.6}
+@keyframes grat{from{transform:translate3d(0,0,0)}to{transform:translate3d(-40px,-64px,0)}}
+.env-glow{position:absolute;inset:0;
+  background:radial-gradient(1200px 700px at 78% 8%,rgba(56,182,255,.09),transparent 62%),
+             radial-gradient(900px 620px at 12% 88%,rgba(255,107,44,.06),transparent 64%);
+  animation:envdrift 90s var(--ease-soft) infinite alternate;animation-delay:-24s}
+@keyframes envdrift{from{opacity:.75;transform:translate3d(0,0,0)}to{opacity:1;transform:translate3d(0,-2.5%,0)}}
+.motes{position:absolute;inset:0}
+.mote{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--signal);opacity:.3;
+  animation:mote linear infinite}
+@keyframes mote{from{transform:translate3d(0,20px,0);opacity:0}
+  12%{opacity:.34}88%{opacity:.3}to{transform:translate3d(14px,-120px,0);opacity:0}}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;align-items:center;gap:2rem;
+  padding:.85rem max(1.2rem,4vw);
+  background:linear-gradient(to bottom,rgba(5,9,18,.86),rgba(5,9,18,0));
+  backdrop-filter:blur(2px);transition:background .5s var(--ease),padding .5s var(--ease)}
+.nav.solid{background:rgba(6,11,21,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--panel-line);padding-block:.6rem}
+/* The supplied logo is a stacked lockup roughly 2:1, so at nav height its wordmark
+   falls to about 8px and disappears. The nav uses the orbit emblem as a mark with the
+   name set beside it; the full lockup still ships whole in the footer. */
+.brand{display:flex;align-items:center;gap:.7rem;min-width:0}
+.brand-mark{width:auto;height:30px}
+.brand-word{display:flex;flex-direction:column;line-height:1.12;
+  font-family:var(--body);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;
+  white-space:nowrap}
+.brand-word span:first-child{color:var(--text)}
+.brand-word span:last-child{color:var(--signal)}
+@media (max-width:420px){.brand-word{display:none}}
+.nav-links{display:flex;gap:1.6rem;list-style:none;margin:0;padding:0;margin-left:auto}
+.nav-links a{color:var(--text-2);font-size:.9rem;transition:color .3s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{font-size:.86rem;padding:.6rem 1.1rem}
+
+.btn{display:inline-block;font-family:var(--mono);font-size:.78rem;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;padding:.85rem 1.5rem;border-radius:3px;border:1px solid transparent;
+  transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),transform .35s var(--ease);
+  cursor:pointer}
+.btn-accent{background:var(--accent);color:#160600;text-shadow:none}
+.btn-accent:hover{background:var(--accent-hover);color:#160600;transform:translateY(-1px)}
+.btn-ghost{border-color:var(--border-int);color:var(--text)}
+.btn-ghost:hover{border-color:var(--signal);color:var(--text);background:var(--signal-muted)}
+@media (pointer:coarse){.btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}}
+
+/* ---------- the scrub hero ---------- */
+.hero{position:relative;z-index:1;height:800vh}
+.stage{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--canvas-deep)}
+.poster,.stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.poster{background-size:cover;background-position:center;transition:opacity .8s var(--ease)}
+.stage video{opacity:0;transition:opacity .8s var(--ease);will-change:transform;transform:translateZ(0)}
+.stage.video-ready video{opacity:1}
+.stage.video-ready .poster{opacity:0}
+.stage.video-failed video{display:none}
+.scrim{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 120% 92% at 50% 46%,rgba(6,10,20,0) 34%,rgba(6,10,20,.64) 100%)}
+
+.ring{position:absolute;left:50%;bottom:9vh;transform:translateX(-50%) rotate(-90deg);
+  width:44px;height:44px;color:var(--signal);opacity:.85;transition:opacity .5s var(--ease)}
+.ring circle{transition:stroke-dashoffset .18s linear}
+.stage.video-ready .ring{opacity:0}
+.cue{position:absolute;left:50%;bottom:9vh;transform:translateX(-50%);width:26px;height:26px;color:var(--signal);opacity:.8;
+  animation:cue 2.6s var(--ease-soft) infinite}
+@keyframes cue{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+/* the signature: the detection reticle */
+.reticle{position:absolute;width:min(30vh,270px);height:min(30vh,270px);color:var(--signal);
+  left:var(--rx,62%);top:var(--ry,62%);transform:translate(-50%,-50%) scale(var(--rs,1));
+  opacity:var(--ro,0);pointer-events:none;
+  transition:opacity .4s var(--ease)}
+.ret-box{opacity:var(--rlock,0);transition:opacity .35s var(--ease)}
+.ret-corners{opacity:var(--rlock,0)}
+.ret-ring{opacity:calc(1 - var(--rlock,0) * .45)}
+.hud{position:absolute;left:max(1.4rem,4vw);bottom:8vh;display:flex;gap:1.1rem;
+  padding:.5rem .8rem;opacity:var(--ro,0);transition:opacity .4s var(--ease);pointer-events:none}
+.hud span{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--signal);
+  font-variant-numeric:tabular-nums}
+.chip{background:rgba(6,10,20,.55);border:1px solid var(--signal-muted);border-radius:10px;
+  backdrop-filter:blur(10px);text-shadow:0 1px 3px rgba(4,6,12,.85)}
+
+/* caption bands */
+.bands{position:absolute;inset:0}
+/* z-index:0 is load-bearing: it gives each band its own stacking context so the
+   scrim's z-index:-1 stays inside the band. Without it the scrim escapes and paints
+   behind the video, which makes every legibility guarantee on this page a lie. */
+.band{position:absolute;left:0;right:0;z-index:0;padding-inline:max(1.4rem,7vw);
+  opacity:var(--o,0);pointer-events:none;text-shadow:var(--tshadow)}
+.band .btn{text-shadow:none}
+/* The per-band scrim. The ellipse is deliberately far taller than the text box:
+   a scrim sized to the words has its falloff running straight through them, which
+   measured 1.98:1 over the white cloud deck. Oversized, the text sits in the
+   gradient's plateau and the frame corners stay live. */
+.band::before{content:"";position:absolute;inset:-300% -8%;pointer-events:none;z-index:-1;
+  opacity:calc(.25 + .75*var(--k,1));
+  background:radial-gradient(ellipse 68% 44% at 50% 50%,rgba(4,6,14,var(--sa,.66)) 0%,rgba(4,6,14,calc(var(--sa,.66)*.82)) 40%,rgba(4,6,14,0) 74%)}
+.band:nth-child(1){top:20vh;--sa:.52}
+.band:nth-child(2){top:20vh;--sa:.54}
+.band:nth-child(3){top:18vh;--sa:.76}   /* the cloud deck is the brightest footage in the film */
+.band:nth-child(4){top:18vh;--sa:.62}
+.band-settle{top:auto;bottom:12vh;--sa:.62}
+/* The settle sits over the brightest part of the resting frame, the glow above the
+   fire line, so its scrim is anchored to the bottom edge and centred on the headline
+   rather than on the block. Measured at 2.65:1 before this. */
+.band-settle::before{inset:-150% -8% -55% -8%;
+  background:radial-gradient(ellipse 80% 52% at 46% 48%,rgba(4,6,14,var(--sa,.9)) 0%,rgba(4,6,14,calc(var(--sa,.9)*.88)) 46%,rgba(4,6,14,0) 80%)}
+
+.band h1,.band .line{
+  font-family:var(--display);font-weight:700;font-variation-settings:"wdth" 128;
+  font-size:clamp(2.1rem,5.4vw,4.3rem);line-height:1.04;letter-spacing:-.02em;
+  max-width:19ch;margin:0}
+.band-settle .line-xl{font-size:clamp(2.6rem,7.4vw,6rem);max-width:14ch}
+.band-settle{text-align:left}
+.settle-sub{margin-top:1.2rem;max-width:46ch;color:#dbe6f4;font-size:clamp(1rem,1.5vw,1.22rem);
+  opacity:var(--ks,1)}
+.settle-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem;opacity:var(--kb,1);pointer-events:auto}
+.band-settle .kicker{opacity:var(--kk,1)}
+
+/* split-text entrance primitives: transform and opacity only */
+.w{display:inline-block;white-space:pre}
+.c{display:inline-block}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+[data-entrance="depth"] .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*2.6,1);opacity:var(--kc);
+  transform:scale(calc(.8 + .2*var(--kc)))}
+[data-entrance="drift"] .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*2.8,1);opacity:var(--kc);
+  transform:translateY(calc((1 - var(--kc))*-28px))}
+[data-entrance="part"] .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*2.6,1);opacity:var(--kc);
+  transform:translateX(calc((1 - var(--kc))*var(--jx,0px)))}
+[data-entrance="blur"] .vis{position:relative;display:inline-block}
+[data-entrance="blur"] .soft{position:absolute;inset:0;filter:blur(11px);opacity:calc(1 - var(--k,0))}
+[data-entrance="blur"] .sharp{opacity:var(--k,0)}
+[data-entrance="rise"] .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*2.4,1);opacity:var(--kc);
+  transform:translateY(calc((1 - var(--kc))*30px))}
+
+/* ---------- the designed static hero ---------- */
+.hero-static{display:none;position:relative;z-index:1;min-height:100svh;overflow:hidden;
+  align-items:flex-end;padding:8rem max(1.4rem,7vw) 4rem}
+.hero-static-media{position:absolute;inset:0;background-size:cover;background-position:52% 62%}
+.hero-static::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(5,9,18,.94) 4%,rgba(5,9,18,.55) 44%,rgba(5,9,18,.3) 100%)}
+.hero-static-inner{position:relative;z-index:2;text-shadow:var(--tshadow)}
+.hero-static-inner .btn{text-shadow:none}
+.hs-title{font-size:clamp(2.6rem,13vw,4.4rem);margin-block:.4rem .9rem}
+.hs-sub{color:#dbe6f4;max-width:34ch;margin-bottom:2rem}
+
+/* ---------- shared section furniture ---------- */
+main{position:relative;z-index:2;background:var(--canvas)}
+section{padding-block:clamp(5rem,11vw,9rem);position:relative}
+.sec-head{width:var(--wrap);margin-inline:auto;max-width:74ch}
+section > .cov-grid,section > .cust-grid,section > .mod-grid,section > .chain-list,section > .trust,
+section > .who-grid,.scan-stage{width:var(--wrap);margin-inline:auto}
+
+.reveal{opacity:0;transform:translateY(22px);
+  transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* 6.1 stats: a tight instrument row, unlike anything adjacent */
+.stats{width:var(--wrap);margin-inline:auto;display:grid;gap:1px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  background:var(--panel-line);border:1px solid var(--panel-line);border-radius:4px;
+  padding:0;margin-top:0;overflow:hidden}
+.stats{padding-block:0}
+.stat{background:var(--panel-2);padding:2.2rem 1.6rem}
+.stat-n{font-size:clamp(1.9rem,3.4vw,2.7rem);color:var(--signal);letter-spacing:.02em;
+  text-transform:none;font-variant-numeric:tabular-nums;line-height:1}
+.stat-l{color:var(--text-2);font-size:.94rem;margin-top:.7rem;max-width:26ch}
+
+/* 6.2 coverage: three columns, hairline dividers, no cards */
+.cov-grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:3.4rem}
+.cov{padding:2rem 1.8rem 2rem 0;border-top:1px solid var(--panel-line)}
+.cov + .cov{padding-left:1.8rem;border-left:1px solid var(--panel-line)}
+.cov h3{margin-bottom:1rem}
+.cov-good,.cov-gap{font-size:.96rem;margin-top:.8rem;color:var(--text-2);padding-left:1rem;position:relative}
+.cov-good::before,.cov-gap::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%}
+.cov-good::before{background:var(--signal)}
+.cov-gap::before{background:var(--accent)}
+.cov-ours{position:relative}
+.cov-ours::after{content:"";position:absolute;left:1.8rem;right:0;top:-1px;height:2px;background:var(--signal)}
+
+/* 6.3 customers: asymmetric, one hero card + two */
+.cust-grid{display:grid;gap:1.4rem;grid-template-columns:1fr 1fr;margin-top:3.4rem}
+.cust-hero{grid-column:1/-1}
+.cust{background:var(--panel-2);border:1px solid var(--panel-line);border-radius:4px;overflow:hidden;
+  transition:border-color .5s var(--ease)}
+.cust:hover{border-color:var(--border-int)}
+.cust-media{overflow:hidden;position:relative;background:var(--panel)}
+.cust-media img{width:100%;transition:transform 1.2s var(--ease)}
+.cust:hover .cust-media img{transform:scale(1.03)}
+.cust-hero .cust-media{aspect-ratio:16/7}
+.cust-hero .cust-media img{height:100%;object-fit:cover}
+.cust-body{padding:1.7rem}
+.cust-meta{color:var(--signal);margin-top:.5rem}
+.cust-body p:last-child{color:var(--text-2);margin-top:.9rem;font-size:.98rem;max-width:52ch}
+
+/* 6.4 the interactive scan */
+.scan-stage{margin-top:3rem;display:flex;flex-direction:column;align-items:center;gap:1.6rem}
+.scan-plate{position:relative;width:100%;border:1px solid var(--panel-line);border-radius:4px;overflow:hidden;
+  background:var(--panel)}
+.scan-plate img{width:100%;display:block}
+.scan-ir{position:absolute;inset:0;height:100%;object-fit:cover;opacity:var(--p,0)}
+.scan-ret{position:absolute;width:16%;color:var(--signal);left:44%;top:38%;
+  transform:translate(-50%,-50%);opacity:calc(clamp(0,(var(--p,0) - .68)*3.5,1))}
+.scan-readout{position:absolute;left:1rem;bottom:1rem;display:flex;gap:1rem;padding:.5rem .8rem;
+  color:var(--signal);opacity:calc(clamp(0,(var(--p,0) - .72)*3.6,1));font-variant-numeric:tabular-nums}
+.scan-btn{position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--border-int);
+  color:var(--text);font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.95rem 2.2rem;border-radius:3px;cursor:pointer;min-height:44px;
+  transition:border-color .4s var(--ease)}
+.scan-btn:hover{border-color:var(--signal)}
+.scan-fill{position:absolute;inset:0;background:var(--signal-muted);transform-origin:left;
+  transform:scaleX(var(--p,0))}
+.scan-label{position:relative}
+.scan-done{color:var(--signal);font-size:.95rem;text-align:center;
+  opacity:calc(clamp(0,(var(--p,0) - .92)*12,1));transition:opacity .4s var(--ease)}
+
+/* 6.5 platform: numbered media cards, different skeleton to 6.4 */
+.mod-grid{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:3.4rem}
+.mod{background:var(--panel-2);border:1px solid var(--panel-line);border-radius:4px;padding:0 0 1.6rem;
+  overflow:hidden}
+.mod-shot{aspect-ratio:16/10;background:var(--panel);border-bottom:1px solid var(--panel-line);overflow:hidden}
+.mod-shot img{width:100%;height:100%;object-fit:cover}
+.mod-n{color:var(--signal);padding:1.3rem 1.4rem .4rem}
+.mod h3{padding-inline:1.4rem}
+.mod p{padding:.7rem 1.4rem 0;color:var(--text-2);font-size:.96rem}
+
+/* 6.6 the alert chain: a vertical timeline, nothing like the grid above */
+.chain{overflow:hidden}
+.chain-list{list-style:none;margin:3.4rem auto 0;padding:0;position:relative;max-width:820px}
+.chain-list li{position:relative;padding:0 0 2.6rem 4.2rem}
+.chain-list li::before{content:"";position:absolute;left:11px;top:.55em;width:9px;height:9px;border-radius:50%;
+  background:var(--canvas);border:2px solid var(--signal)}
+.chain-n{position:absolute;left:2.2rem;top:.1em;color:var(--signal);opacity:.5}
+.chain-list h3{margin-bottom:.4rem}
+.chain-list p{color:var(--text-2);font-size:.98rem}
+.chain-line{position:absolute;left:calc(50% - 410px + 15px);top:0;width:2px;height:100%;color:var(--signal-dim);
+  pointer-events:none}
+.chain-line path{stroke-dasharray:800;stroke-dashoffset:calc(800 - 800*var(--draw,0))}
+
+/* 6.7 who: a plain list of rules, no cards at all */
+.who-grid{list-style:none;margin:3.4rem auto 0;padding:0;display:grid;gap:0;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.who-grid li{padding:1.7rem 1.6rem 1.7rem 0;border-top:1px solid var(--panel-line)}
+.who-grid p{color:var(--text-2);font-size:.95rem;margin-top:.4rem}
+
+/* 6.8 local: one wide statement panel */
+.local{position:relative}
+.local-inner{width:var(--wrap);margin-inline:auto;background:var(--panel-2);
+  border:1px solid var(--panel-line);border-left:2px solid var(--signal);border-radius:4px;
+  padding:clamp(2rem,5vw,3.6rem)}
+.local-list{list-style:none;margin:2rem 0 0;padding:0;display:grid;gap:.7rem;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.local-list li{padding-left:1.5rem;position:relative;color:var(--text-2);font-size:.98rem}
+.local-list li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:1px;background:var(--signal)}
+
+
+/* 6.10 the demo */
+.demo{display:grid;gap:clamp(2rem,5vw,4rem);grid-template-columns:1fr 1fr;
+  width:var(--wrap);margin-inline:auto;align-items:start}
+.demo-form{display:grid;gap:1rem;grid-template-columns:1fr 1fr;
+  background:var(--panel-2);border:1px solid var(--panel-line);border-radius:4px;padding:clamp(1.6rem,3vw,2.4rem)}
+.demo-form label{display:flex;flex-direction:column;gap:.45rem;font-family:var(--mono);
+  font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2)}
+.demo-form .wide{grid-column:1/-1}
+.demo-form input{background:var(--canvas);border:1px solid var(--border-int);border-radius:3px;
+  padding:.75rem .8rem;color:var(--text);font-family:var(--body);font-size:1rem;letter-spacing:normal;
+  text-transform:none;transition:border-color .35s var(--ease)}
+.demo-form input:focus{border-color:var(--signal);outline:none}
+.demo-form input:user-invalid{border-color:var(--accent)}
+.demo-form button{grid-column:1/-1;justify-self:start;margin-top:.4rem}
+.form-note{grid-column:1/-1;color:var(--signal);min-height:1.2em;text-transform:none;letter-spacing:.02em;
+  font-size:.82rem}
+
+/* ---------- footer ---------- */
+.foot{position:relative;z-index:2;background:var(--canvas-deep);border-top:1px solid var(--panel-line);
+  padding:4rem max(1.4rem,4vw) 2rem}
+.foot-grid{width:var(--wrap);margin-inline:auto;display:grid;gap:2.4rem;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.foot img{height:32px;width:auto}
+.foot-note{color:var(--text-2);font-size:.92rem;margin-top:1rem;max-width:34ch}
+.foot h4{color:var(--signal);margin:0 0 .9rem}
+.foot p{color:var(--text-2);font-size:.95rem}
+.foot-legal{width:var(--wrap);margin:3rem auto 0;color:#5c6d85;text-transform:none;letter-spacing:.04em}
+
+/* ---------- short screens: the small overlays have no room ---------- */
+@media (max-height:560px){.hud,.cue,.ring{display:none}}
+
+/* ---------- responsive ---------- */
+@media (max-width:860px){
+  .nav-links{display:none}
+  .cust-grid{grid-template-columns:1fr}
+  .demo{grid-template-columns:1fr}
+  .demo-form{grid-template-columns:1fr}
+  .cov + .cov{padding-left:0;border-left:0}
+  .cov{padding-right:0}
+}
+
+/* ---------- the five static-hero gates ----------
+   These five queries are character-identical to the GATES array in site.js. */
+@media (max-width: 720px){.hero{display:none}.hero-static{display:flex}}
+@media (orientation: portrait) and (max-width: 1024px){.hero{display:none}.hero-static{display:flex}}
+@media (orientation: portrait) and (pointer: coarse){.hero{display:none}.hero-static{display:flex}}
+@media (orientation: landscape) and (pointer: coarse) and (max-height: 560px){.hero{display:none}.hero-static{display:flex}}
+@media (prefers-reduced-motion: reduce){.hero{display:none}.hero-static{display:flex}}
+
+/* ---------- reduced motion, honoured completely ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;transition-delay:0ms !important}
+  .reveal{opacity:1;transform:none}
+  .scan-ir{opacity:1}
+  .scan-ret,.scan-readout,.scan-done{opacity:1}
+  .chain-line path{stroke-dashoffset:0}
+  .motes{display:none}
+}
+
+/* pause every loop off-screen and on hidden tabs */
+body.paused *,body.paused *::before,body.paused *::after{animation-play-state:paused !important}
+
+/* the static hero's composed image, loaded only when the gates show it */
+.hero-static-media{background-image:url('hero-ending.jpg')}
+
+
+/* the footer shows the supplied lockup whole, at a readable size */
+.foot img{height:auto;width:190px}
+
+/* the customer trust row: type lockups now, official logo files when they land */
+.trust{list-style:none;margin:3rem auto 0;padding:0;display:grid;gap:1px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  background:var(--panel-line);border:1px solid var(--panel-line);border-radius:4px;overflow:hidden}
+.trust-item{background:var(--panel-2);display:flex;align-items:center;justify-content:center;
+  min-height:104px;padding:1.4rem}
+.trust-name{font-family:var(--mono);font-size:.76rem;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--text-2);text-align:center;line-height:1.5;
+  transition:color .4s var(--ease)}
+.trust-item:hover .trust-name{color:var(--text)}
+.trust-item img{max-height:46px;width:auto;object-fit:contain}
+
+/* module captions and the wide fire-spread card */
+.mod-cap{padding:.9rem 1.4rem 0;color:var(--signal);opacity:.72;font-size:.62rem}
+.mod-wide{grid-column:auto}
+@media (max-width:760px){.mod-wide{grid-column:auto}}
+
+/* full-bleed image band: breaks the column rhythm so no two neighbours match */
+.bleed{margin:0;position:relative;overflow:hidden}
+.bleed img{width:100%;height:clamp(320px,52vh,600px);object-fit:cover;display:block}
+.bleed figcaption{position:absolute;left:0;right:0;bottom:0;
+  padding:clamp(3rem,9vh,7rem) max(1.4rem,7vw) clamp(1.6rem,4vh,2.6rem);
+  background:linear-gradient(to top,rgba(5,9,18,.96) 12%,rgba(5,9,18,.55) 58%,rgba(5,9,18,0) 100%);
+  color:var(--text);font-size:clamp(1rem,1.5vw,1.18rem)}
+.bleed-cap{display:block;max-width:64ch}
+.bleed figcaption .mono{display:block;color:var(--signal);margin-bottom:.7rem}

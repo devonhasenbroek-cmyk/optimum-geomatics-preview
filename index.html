@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Optimum Geomatics | Thermal wildfire detection from orbit, across Africa</title>
+<meta name="description" content="Optimum Geomatics is the OroraTech reseller for Africa. Thermal satellite wildfire detection across your whole estate, every hour of every day. Serving Kruger National Park, WWF Zambia and Merensky Timbers.">
+<meta name="theme-color" content="#080d18">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23080d18'/%3E%3Ctext x='16' y='23' font-family='Roboto,Arial,sans-serif' font-size='21' font-weight='700' fill='%2338b6ff' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+
+<!-- DEPLOY STEP: patch og:url and og:image with the live absolute URL before going online -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Optimum Geomatics | Thermal wildfire detection from orbit">
+<meta property="og:description" content="A tower sees where it is pointed. A sensor sees where you put it. We see all of it.">
+<meta property="og:url" content="https://optimum-geomatics-preview.netlify.app/">
+<meta property="og:image" content="https://optimum-geomatics-preview.netlify.app/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="assets/fonts/robotoflex-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/roboto-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- the one fixed background environment layer -->
+<div class="env" aria-hidden="true">
+  <svg class="graticule" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+    <g class="grat-lines"></g>
+  </svg>
+  <div class="env-glow"></div>
+  <div class="motes"></div>
+</div>
+
+<nav class="nav" aria-label="Main">
+  <a class="brand" href="#top" aria-label="Optimum Geomatics, home">
+    <img class="brand-mark" src="assets/mark.png" alt="" aria-hidden="true" width="176" height="155">
+    <span class="brand-word" aria-hidden="true"><span>Optimum</span><span>Geomatics</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#coverage">Coverage</a></li>
+    <li><a href="#customers">Customers</a></li>
+    <li><a href="#platform">Platform</a></li>
+    <li><a href="#alerts">Alerts</a></li>
+  </ul>
+  <a class="btn btn-accent nav-cta" href="#demo">Book a live demo</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="stage">
+    <div class="poster" aria-hidden="true"></div>
+    <video id="hero-video" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
+    <div class="scrim" aria-hidden="true"></div>
+
+    <!-- the signature: the detection reticle -->
+    <svg class="reticle" viewBox="0 0 200 200" aria-hidden="true">
+      <g class="ret-ring">
+        <circle cx="100" cy="100" r="46" fill="none" stroke="currentColor" stroke-width="1" opacity=".55"/>
+        <path d="M100 40v18M100 142v18M40 100h18M142 100h18" stroke="currentColor" stroke-width="1.2"/>
+      </g>
+      <rect class="ret-box" x="76" y="76" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path class="ret-corners" d="M70 82V70h12M130 70h-12v12M130 118v12h-12M82 130H70v-12" fill="none" stroke="currentColor" stroke-width="2"/>
+    </svg>
+
+    <div class="hud chip" aria-hidden="true">
+      <span class="hud-lat">--.----&deg; S</span>
+      <span class="hud-lon">--.----&deg; E</span>
+      <span class="hud-alt">--- km</span>
+    </div>
+
+    <svg class="ring" viewBox="0 0 48 48" aria-hidden="true">
+      <circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="3"
+              stroke-dasharray="126" style="stroke-dashoffset:var(--ld,126)"/>
+    </svg>
+
+    <div class="bands">
+      <div class="band" data-a="0.00" data-b="0.16" data-entrance="depth">
+        <h1 class="split">Wildfire Intelligence From Orbit.</h1>
+      </div>
+      <div class="band" data-a="0.19" data-b="0.35" data-entrance="drift">
+        <p class="line split">Detect It In Minutes, Not From A Smoke Column.</p>
+      </div>
+      <div class="band" data-a="0.38" data-b="0.53" data-entrance="part">
+        <p class="line split">A Tower Sees Where It Is Pointed.</p>
+      </div>
+      <div class="band" data-a="0.56" data-b="0.71" data-entrance="blur">
+        <p class="line split">A Sensor Sees Where You Put It.</p>
+      </div>
+      <div class="band band-settle" data-a="0.76" data-b="1.00" data-entrance="rise">
+        <p class="kicker mono">OPTIMUM GEOMATICS</p>
+        <p class="line line-xl split">We See All Of It.</p>
+        <p class="settle-sub">Thermal wildfire detection from orbit, across your whole estate, every hour of every day.</p>
+        <div class="settle-cta">
+          <a class="btn btn-accent" href="#demo">Book a live demo</a>
+          <a class="btn btn-ghost" href="#coverage">See what it covers</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- the designed static hero: phones, portrait tablets, landscape phones, reduced motion -->
+<header class="hero-static" id="top-static">
+  <div class="hero-static-media" aria-hidden="true"></div>
+  <div class="hero-static-inner">
+    <p class="kicker mono">OFFICIAL ORORATECH RESELLER FOR AFRICA</p>
+    <h1 class="hs-title">We See All Of It.</h1>
+    <p class="hs-sub">Thermal wildfire detection from orbit, across your whole estate, every hour of every day.</p>
+    <a class="btn btn-accent" href="#demo">Book a live demo</a>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <!-- 6.1 the stat band -->
+  <section class="stats reveal" aria-label="Key figures">
+    <div class="stat">
+      <p class="stat-n mono" data-count="80" data-suffix="%">80%</p>
+      <p class="stat-l">of South Africa's commercial timber loss is fire</p>
+    </div>
+    <div class="stat">
+      <p class="stat-n mono" data-count="53" data-suffix="M ha">53M ha</p>
+      <p class="stat-l">burnt across Africa in the first half of 2025</p>
+    </div>
+    <div class="stat">
+      <p class="stat-n mono">4 &times; 4 m</p>
+      <p class="stat-l">the smallest fire the constellation detects</p>
+    </div>
+  </section>
+
+  <!-- 6.2 coverage -->
+  <section class="coverage" id="coverage">
+    <div class="sec-head reveal">
+      <p class="kicker mono">COVERAGE</p>
+      <h2>You already have detection. This is about the gaps in it.</h2>
+      <p class="lede">Towers and sensors are good at what they cover. The question is what is left over. On most estates, that is nearly all of it.</p>
+    </div>
+    <div class="cov-grid">
+      <article class="cov reveal">
+        <h3>Lookout towers</h3>
+        <p class="cov-good">Good at: a trained spotter reading smoke against a skyline they know by heart.</p>
+        <p class="cov-gap">Cannot cover: anything behind a ridge, anything past the horizon, and every hour the tower is unmanned.</p>
+      </article>
+      <article class="cov reveal">
+        <h3>Ground sensor networks</h3>
+        <p class="cov-good">Good at: catching a fire early in the exact stand where the sensor sits.</p>
+        <p class="cov-gap">Cannot cover: the ground you did not instrument, which on a large estate is most of it.</p>
+      </article>
+      <article class="cov reveal cov-ours">
+        <h3>Thermal satellite</h3>
+        <p class="cov-good">Good at: watching the entire estate at once, through smoke and cloud, day and night.</p>
+        <p class="cov-gap">Honest limit: it sees heat, not intent. It tells you where and when. Your people still decide what to do.</p>
+      </article>
+    </div>
+  </section>
+
+  <figure class="bleed reveal">
+    <img src="assets/coverage-fynbos.jpg" alt="Aerial view of steep fynbos-covered mountains running down to the Atlantic near Cape Town" loading="lazy" width="1920" height="1080">
+    <figcaption>
+      <span class="bleed-cap"><span class="mono">THE OTHER NINETY PERCENT</span>
+      There is no tower on this ridge, and there is no sensor in that gully. On ground like
+      this, the first person to see the smoke is usually the first person to smell it.
+    </span>
+    </figcaption>
+  </figure>
+
+  <!-- 6.3 customers -->
+  <section class="customers" id="customers">
+    <div class="sec-head reveal">
+      <p class="kicker mono">IN SERVICE</p>
+      <h2>Already watching, right now.</h2>
+    </div>
+
+    <!-- LOGO SLOTS: to switch a name for its official logo, save the file as
+         assets/logo-kruger.png (or logo-wwf.png / logo-merensky.png) AND add
+         data-logo="assets/logo-kruger.png" to that li. The swap is automatic.
+         Old note: drop the official files in as assets/logo-kruger.png,
+         assets/logo-wwf.png and assets/logo-merensky.png and they replace the
+         type lockups automatically. Each needs the customer's written permission. -->
+    <ul class="trust reveal" aria-label="Customers">
+      <li class="trust-item">
+        <span class="trust-name">Kruger National Park</span>
+      </li>
+      <li class="trust-item">
+        <span class="trust-name">WWF Zambia</span>
+      </li>
+      <li class="trust-item">
+        <span class="trust-name">Merensky Timbers</span>
+      </li>
+    </ul>
+    <div class="cust-grid">
+      <article class="cust cust-hero reveal">
+        <div class="cust-media"><img src="assets/cust-kruger.jpg" alt="Kruger National Park lowveld at low golden light" loading="lazy" width="1600" height="900"></div>
+        <div class="cust-body">
+          <h3>Kruger National Park</h3>
+          <p class="mono cust-meta">CONSERVATION &middot; SOUTH AFRICA</p>
+          <p>Nearly two million hectares of bushveld, most of it hours from the nearest road. Coverage is not a feature there. It is the only way the ground gets watched at all.</p>
+        </div>
+      </article>
+      <article class="cust reveal">
+        <div class="cust-media"><img src="assets/cust-wwf.jpg" alt="Miombo woodland at dawn with mist in the valleys" loading="lazy" width="1200" height="900"></div>
+        <div class="cust-body">
+          <h3>WWF Zambia</h3>
+          <p class="mono cust-meta">CONSERVATION &middot; ZAMBIA</p>
+          <p>Miombo woodland across borders, monitored from the same constellation and the same platform.</p>
+        </div>
+      </article>
+      <article class="cust reveal">
+        <div class="cust-media"><img src="assets/cust-merensky.jpg" alt="Eucalyptus compartments from the air with a firebreak line" loading="lazy" width="1200" height="900"></div>
+        <div class="cust-body">
+          <h3>Merensky Timbers</h3>
+          <p class="mono cust-meta">COMMERCIAL FORESTRY &middot; SOUTH AFRICA</p>
+          <p>Standing timber is a crop that burns. Detection here is measured against the value of a compartment.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 6.4 the interactive moment -->
+  <section class="scan" id="scan">
+    <div class="sec-head reveal">
+      <p class="kicker mono">TRY IT</p>
+      <h2>Hold to scan.</h2>
+      <p class="lede">This is a plantation at night, in ordinary light. Press and hold, and look again.</p>
+    </div>
+    <div class="scan-stage reveal">
+      <div class="scan-plate">
+        <img class="scan-vis" src="assets/scan-visible.jpg" alt="Plantation at night in visible light" loading="lazy" width="1600" height="900">
+        <img class="scan-ir" src="assets/scan-thermal.jpg" alt="" aria-hidden="true" loading="lazy" width="1600" height="900">
+        <svg class="scan-ret" viewBox="0 0 200 200" aria-hidden="true">
+          <rect x="80" y="80" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M74 86V74h12M126 74h-12v12M126 114v12h-12M86 126H74v-12" fill="none" stroke="currentColor" stroke-width="2.4"/>
+        </svg>
+        <p class="scan-readout mono chip"><span class="sr-coord">--.----&deg; S  --.----&deg; E</span><span class="sr-size">4 10 &times; 10 mtimes; 4 m</span><span class="sr-age">0 min ago</span></p>
+      </div>
+      <button class="scan-btn" type="button" aria-describedby="scan-help">
+        <span class="scan-fill" aria-hidden="true"></span>
+        <span class="scan-label">Hold to scan</span>
+      </button>
+      <p class="scan-done" id="scan-help" role="status">Three heat signatures. None of them visible from the road.</p>
+    </div>
+  </section>
+
+  <!-- 6.5 the platform -->
+  <section class="platform" id="platform">
+    <div class="sec-head reveal">
+      <p class="kicker mono">THE PLATFORM</p>
+      <h2>Five things it does, in the order you need them.</h2>
+    </div>
+    <div class="mod-grid">
+      <article class="mod reveal">
+        <div class="mod-shot"><img src="assets/plat-risk.jpg" alt="Short-term fire hazard forecast map in the Wildfire Solution web app, shaded from very low to very high risk" loading="lazy" width="1600" height="1136"></div>
+        <p class="mono mod-n">01</p><h3>Risk forecast</h3>
+        <p>Nine days of fire danger ahead, with wind, temperature, humidity, lightning and fuel moisture on the same map.</p>
+        <p class="mod-cap mono">SHORT-TERM FIRE HAZARD FORECAST</p>
+      </article>
+      <article class="mod reveal">
+        <div class="mod-shot"><img src="assets/plat-detect.jpg" alt="An incident commander reading live fire detections on a tablet at the fire line" loading="lazy" width="1600" height="506"></div>
+        <p class="mono mod-n">02</p><h3>Detection</h3>
+        <p>Over 35 satellite sources, several passes an hour, filtered for false positives, down to fires 4 by 4 metres.</p>
+        <p class="mod-cap mono">LIVE DETECTION IN THE FIELD</p>
+      </article>
+      <article class="mod reveal mod-wide">
+        <div class="mod-shot"><img src="assets/plat-spread.jpg" alt="Modelled fire spread across the Stellenbosch to Franschhoek valley, banded by hours ahead" loading="lazy" width="1600" height="951"></div>
+        <p class="mono mod-n">03</p><h3>Fire spread</h3>
+        <p>Where the front is likely to run next, up to 24 hours ahead, from the weather, the terrain and the fuel it is moving through.</p>
+        <p class="mod-cap mono">FIRE SPREAD MODEL &middot; STELLENBOSCH TO FRANSCHHOEK</p>
+      </article>
+      <article class="mod reveal">
+        <div class="mod-shot"><img src="assets/shot-pending.svg" alt="Burnt area mapping" loading="lazy" width="1200" height="750"></div>
+        <p class="mono mod-n">04</p><h3>Burnt area</h3>
+        <p>Burn scar and severity mapping, five severity classes, delivered automatically two to three days after the fire is out.</p>
+      </article>
+      <article class="mod reveal">
+        <div class="mod-shot"><img src="assets/shot-pending.svg" alt="Historical fire analytics dashboard" loading="lazy" width="1200" height="750"></div>
+        <p class="mono mod-n">05</p><h3>Analytics</h3>
+        <p>Seasons of history in one place, so you can see where your fires keep starting and stop arguing about it.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 6.6 the alert chain -->
+  <section class="chain" id="alerts">
+    <div class="sec-head reveal">
+      <p class="kicker mono">THE FIRST HOUR</p>
+      <h2>How an alert actually reaches you.</h2>
+    </div>
+    <ol class="chain-list">
+      <li class="reveal"><span class="mono chain-n">01</span><h3>A satellite passes</h3><p>Thermal infrared, through smoke and cloud, several times an hour.</p></li>
+      <li class="reveal"><span class="mono chain-n">02</span><h3>The heat signal is checked</h3><p>Algorithms strip out the flare stacks, the hot roofs and the sun glint before anyone is woken up.</p></li>
+      <li class="reveal"><span class="mono chain-n">03</span><h3>Your phone goes</h3><p>WhatsApp, SMS, email or in app, within minutes, only for the areas you monitor.</p></li>
+      <li class="reveal"><span class="mono chain-n">04</span><h3>The coordinates open on a map</h3><p>Location, estimated size, and the terrain around it.</p></li>
+      <li class="reveal"><span class="mono chain-n">05</span><h3>Your crew rolls</h3><p>To a place, not a rumour.</p></li>
+    </ol>
+    <svg class="chain-line" viewBox="0 0 4 800" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M2 0 V800" fill="none" stroke="currentColor" stroke-width="2"/>
+    </svg>
+  </section>
+
+  <!-- 6.7 who it is for -->
+  <section class="who" id="who">
+    <div class="sec-head reveal">
+      <p class="kicker mono">WHO THIS IS FOR</p>
+      <h2>If the ground is yours to answer for, it is yours to watch.</h2>
+    </div>
+    <ul class="who-grid">
+      <li class="reveal"><h3>Forestry and plantations</h3><p>Standing timber, compartment by compartment.</p></li>
+      <li class="reveal"><h3>Conservancies and game reserves</h3><p>Large, remote, and mostly unwatched at night.</p></li>
+      <li class="reveal"><h3>Utilities and transmission corridors</h3><p>Long thin assets nobody can patrol end to end.</p></li>
+      <li class="reveal"><h3>Municipalities and FPAs</h3><p>Shared awareness across members and boundaries.</p></li>
+      <li class="reveal"><h3>Insurance and risk</h3><p>Independent evidence of what burned, and when.</p></li>
+    </ul>
+  </section>
+
+  <!-- 6.8 why Durban -->
+  <section class="local reveal" id="local">
+    <div class="local-inner">
+      <p class="kicker mono">WHY US</p>
+      <h2>The satellites are German. The support is not.</h2>
+      <p class="lede">Optimum Geomatics is the OroraTech reseller for Africa. Same constellation, same platform, bought and supported from Durban.</p>
+      <ul class="local-list">
+        <li>Onboarding done with your team, on your estate</li>
+        <li>Your timezone, and a WhatsApp number that answers</li>
+        <li>Set up around how your FPA already works</li>
+        <li>Invoiced in rand</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- the cloud shot earns its place on its own: it is the one product claim a
+       photograph can make, and it kept the strongest image from the removed FAQ -->
+  <figure class="bleed reveal">
+    <img src="assets/through-cloud.jpg" alt="A fire glowing up through an unbroken deck of cloud, seen from above" loading="lazy" width="1920" height="1071">
+    <figcaption>
+      <span class="bleed-cap"><span class="mono">THROUGH THE CLOUD</span>
+      A fire burning under an unbroken cloud deck. From the ground this is a weather
+      report. From orbit it is a detection.</span>
+    </figcaption>
+  </figure>
+
+  <!-- 6.10 the one call to action -->
+  <section class="demo" id="demo">
+    <div class="demo-copy reveal">
+      <p class="kicker mono">BOOK A LIVE DEMO</p>
+      <h2>See your own ground.</h2>
+      <p class="lede">Send us the estate. We will run the platform over your actual coordinates and show you what the last fire season looked like from orbit.</p>
+    </div>
+    <form class="demo-form reveal" id="demo-form" novalidate>
+      <label>Name<input type="text" name="name" required autocomplete="name"></label>
+      <label>Organisation<input type="text" name="org" required autocomplete="organization"></label>
+      <label>Email<input type="email" name="email" required autocomplete="email"></label>
+      <label>Phone or WhatsApp<input type="tel" name="phone" autocomplete="tel"></label>
+      <label class="wide">What are you protecting?<input type="text" name="protecting" placeholder="Plantation, reserve, network, municipality"></label>
+      <label class="wide">Roughly how many hectares?<input type="text" name="hectares"></label>
+      <button class="btn btn-accent" type="submit">Book the demo</button>
+      <p class="form-note mono" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <img src="assets/logo.png" alt="Optimum Geomatics" width="1542" height="780" loading="lazy">
+      <p class="foot-note">Optimum Geomatics (PTY) Ltd. Official OroraTech reseller for Africa.</p>
+    </div>
+    <div>
+      <h4 class="mono">CONTACT</h4>
+      <p><a href="mailto:devon@optimumgeomatics.co.za">devon@optimumgeomatics.co.za</a></p>
+      <p><a href="tel:+27721598917">+27 72 159 8917</a></p>
+      <p>Ballito, South Africa</p>
+    </div>
+    <div>
+      <h4 class="mono">HOURS</h4>
+      <p>Monday to Friday, 9am to 5pm</p>
+      <p><a href="https://www.linkedin.com/company/optimum-geomatics/" rel="noopener">LinkedIn</a></p>
+    </div>
+  </div>
+  <p class="foot-legal mono">&copy; <span id="yr">2026</span> Optimum Geomatics (PTY) Ltd.</p>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
