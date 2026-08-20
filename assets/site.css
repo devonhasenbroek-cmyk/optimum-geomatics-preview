@@ -473,3 +473,17 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .quote-who{font-weight:500}
 .quote-where{color:var(--signal)}
 .quote-src{color:#5c6d85;font-size:.82rem}
+
+/* the reseller lockup: their mark sits with the hero, not bolted beside it */
+.reseller{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;margin-bottom:1.1rem}
+.reseller .mono{color:var(--text-2);letter-spacing:.16em;font-size:.66rem;white-space:nowrap}
+.reseller img{height:clamp(20px,2.1vw,26px);width:auto;
+  filter:drop-shadow(0 2px 10px rgba(4,6,12,.75))}
+/* a hairline between the words and their mark, so it reads as one lockup */
+.reseller .mono::after{content:"";display:inline-block;width:1.4rem;height:1px;
+  background:var(--signal-dim);vertical-align:middle;margin-left:.9rem}
+.band-settle .reseller{opacity:var(--kk,1)}
+@media (max-width:420px){
+  .reseller{gap:.6rem}
+  .reseller .mono::after{width:.8rem;margin-left:.6rem}
+}
