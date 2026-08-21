@@ -487,3 +487,15 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .reseller{gap:.6rem}
   .reseller .mono::after{width:.8rem;margin-left:.6rem}
 }
+
+/* the who-it-is-for cards now lead somewhere */
+.who-grid li{padding:0;border-top:1px solid var(--panel-line)}
+.who-grid a{display:block;padding:1.7rem 1.6rem 1.7rem 0;color:var(--text);
+  transition:color .35s var(--ease)}
+.who-grid a:hover{color:var(--text)}
+.who-grid a:hover h3{color:var(--signal)}
+.who-grid h3{transition:color .35s var(--ease)}
+.who-go{display:inline-block;margin-top:.9rem;color:var(--signal);opacity:.75;
+  transition:transform .35s var(--ease),opacity .35s var(--ease)}
+.who-go::after{content:" \2192"}
+.who-grid a:hover .who-go{opacity:1;transform:translateX(3px)}
