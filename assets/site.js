@@ -95,7 +95,7 @@ splitAll();
  * the scrub hero
  * ------------------------------------------------------------------ */
 var VIDEO_URL = 'assets/hero-scrub.mp4';
-var VIDEO_BYTES = 1287089;
+var VIDEO_BYTES = 2365589;
 var POSTER_URL = 'assets/hero-poster.jpg';
 
 var hero = document.querySelector('.hero');

@@ -167,18 +167,17 @@ p{margin:0}
    gradient's plateau and the frame corners stay live. */
 .band::before{content:"";position:absolute;inset:-300% -8%;pointer-events:none;z-index:-1;
   opacity:calc(.25 + .75*var(--k,1));
-  background:radial-gradient(ellipse 68% 44% at 50% 50%,rgba(4,6,14,var(--sa,.66)) 0%,rgba(4,6,14,calc(var(--sa,.66)*.82)) 40%,rgba(4,6,14,0) 74%)}
-.band:nth-child(1){top:20vh;--sa:.52}
-.band:nth-child(2){top:20vh;--sa:.54}
-.band:nth-child(3){top:18vh;--sa:.76}   /* the cloud deck is the brightest footage in the film */
-.band:nth-child(4){top:18vh;--sa:.62}
-.band-settle{top:auto;bottom:12vh;--sa:.62}
+  background:radial-gradient(ellipse 72% 46% at 34% 50%,rgba(4,6,14,var(--sa,.66)) 0%,rgba(4,6,14,calc(var(--sa,.66)*.86)) 46%,rgba(4,6,14,0) 82%)}
+.band:nth-child(1){top:20vh;--sa:.88}   /* solar panels and sun flare are bright */
+.band:nth-child(2){top:20vh;--sa:.93}   /* Earth is bright under this beat */
+.band:nth-child(3){top:18vh;--sa:.88}   /* bright Cape sky behind the smoke */
+.band:nth-child(4){top:18vh;--sa:.84}
+.band-settle{top:auto;bottom:12vh;--sa:.86}
 /* The settle sits over the brightest part of the resting frame, the glow above the
    fire line, so its scrim is anchored to the bottom edge and centred on the headline
    rather than on the block. Measured at 2.65:1 before this. */
 .band-settle::before{inset:-150% -8% -55% -8%;
-  background:radial-gradient(ellipse 80% 52% at 46% 48%,rgba(4,6,14,var(--sa,.9)) 0%,rgba(4,6,14,calc(var(--sa,.9)*.88)) 46%,rgba(4,6,14,0) 80%)}
-
+  background:radial-gradient(ellipse 74% 54% at 34% 48%,rgba(4,6,14,var(--sa,.9)) 0%,rgba(4,6,14,calc(var(--sa,.9)*.9)) 50%,rgba(4,6,14,0) 84%)}
 .band h1,.band .line{
   font-family:var(--display);font-weight:700;font-variation-settings:"wdth" 128;
   text-transform:capitalize;
