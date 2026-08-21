@@ -50,9 +50,7 @@ function splitAll() {
     var text = el.textContent.trim();
     var mode = el.closest('[data-entrance]');
     mode = mode ? mode.getAttribute('data-entrance') : 'rise';
-    var sr = document.createElement('span');
-    sr.className = 'sr';
-    sr.textContent = text;
+    el.setAttribute("aria-label", text);
 
     if (mode === 'blur') {
       var vis = document.createElement('span');
@@ -67,7 +65,6 @@ function splitAll() {
       vis.appendChild(soft);
       vis.appendChild(sharp);
       el.textContent = '';
-      el.appendChild(sr);
       el.appendChild(vis);
       return;
     }
@@ -89,7 +86,6 @@ function splitAll() {
       wrap.appendChild(span);
     });
     el.textContent = '';
-    el.appendChild(sr);
     el.appendChild(wrap);
   });
 }
