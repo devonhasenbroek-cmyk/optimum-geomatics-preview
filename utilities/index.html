@@ -4,24 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://optimumgeomatics.co.za/utilities/">
-<title>Wildfire Detection For Utilities And Transmission Corridors | Optimum Geomatics</title>
-<meta name="description" content="Satellite wildfire monitoring for power utilities, transmission servitudes and linear infrastructure across Africa.">
+<title>Wildfire Detection For Power Networks | Optimum Geomatics</title>
+<meta name="description" content="Satellite wildfire monitoring for transmission servitudes and rural feeders across Africa. See fire approaching the line before it trips the feeder.">
 <meta name="theme-color" content="#080d18">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23080d18'/%3E%3Ctext x='16' y='23' font-family='Roboto,Arial,sans-serif' font-size='21' font-weight='700' fill='%2338b6ff' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Wildfire Detection For Utilities And Transmission Corridors | Optimum Geomatics">
-<meta property="og:description" content="Satellite wildfire monitoring for power utilities, transmission servitudes and linear infrastructure across Africa.">
+<meta property="og:title" content="Wildfire Detection For Power Networks | Optimum Geomatics">
+<meta property="og:description" content="Satellite wildfire monitoring for transmission servitudes and rural feeders across Africa. See fire approaching the line before it trips the feeder.">
 <meta property="og:url" content="https://optimumgeomatics.co.za/utilities/">
 <meta property="og:image" content="https://optimumgeomatics.co.za/assets/ind-utilities.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage",
- "url":"https://optimumgeomatics.co.za/utilities/","name":"Wildfire Detection For Utilities And Transmission Corridors | Optimum Geomatics","description":"Satellite wildfire monitoring for power utilities, transmission servitudes and linear infrastructure across Africa.",
- "isPartOf":{"@type":"WebSite","url":"https://optimumgeomatics.co.za/"},
- "about":{"@type":"Service","name":"A Servitude Nobody Can Patrol End To End.","provider":{"@type":"Organization","name":"Optimum Geomatics (PTY) Ltd","url":"https://optimumgeomatics.co.za/"}},
- "breadcrumb":{"@type":"BreadcrumbList","itemListElement":[
-   {"@type":"ListItem","position":1,"name":"Home","item":"https://optimumgeomatics.co.za/"},
-   {"@type":"ListItem","position":2,"name":"Utilities","item":"https://optimumgeomatics.co.za/utilities/"}]}}
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebPage","@id":"https://optimumgeomatics.co.za/utilities/#page","url":"https://optimumgeomatics.co.za/utilities/","name":"Wildfire Detection For Power Networks | Optimum Geomatics","description":"Satellite wildfire monitoring for transmission servitudes and rural feeders across Africa. See fire approaching the line before it trips the feeder.","inLanguage":"en","isPartOf":{"@id":"https://optimumgeomatics.co.za/#website"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://optimumgeomatics.co.za/assets/ind-utilities.jpg"},"about":{"@id":"https://optimumgeomatics.co.za/utilities/#service"}},
+{"@type":"Service","@id":"https://optimumgeomatics.co.za/utilities/#service","name":"Wildfire monitoring for utilities and transmission corridors","serviceType":"Wildfire detection and monitoring","areaServed":{"@type":"Place","name":"Africa"},"provider":{"@id":"https://optimumgeomatics.co.za/#org"},"description":"Satellite wildfire monitoring for transmission servitudes and rural feeders across Africa. See fire approaching the line before it trips the feeder."},
+{"@type":"BreadcrumbList","@id":"https://optimumgeomatics.co.za/utilities/#crumbs","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Optimum Geomatics","item":"https://optimumgeomatics.co.za/"},
+{"@type":"ListItem","position":2,"name":"Utilities","item":"https://optimumgeomatics.co.za/utilities/"}]},
+{"@type":"FAQPage","@id":"https://optimumgeomatics.co.za/utilities/#faq","mainEntity":[{"@type":"Question","name":"How would we know about a fire near the line before it trips?","acceptedAnswer":{"@type":"Answer","text":"Detection is on heat, across the corridor and the ground around it, rather than on the fault itself. Combined with spread modelling it gives you a fire that is approaching the servitude rather than a trip that has already happened."}},{"@type":"Question","name":"Can we monitor the whole servitude, or only substations?","acceptedAnswer":{"@type":"Answer","text":"The whole route. The monitored area follows your shapefiles, so a corridor with a margin either side is a normal shape to monitor, and length is not the constraint it is for patrols."}},{"@type":"Question","name":"Can we get alerts per feeder or per region?","acceptedAnswer":{"@type":"Answer","text":"Yes. Areas can be split so the alert reaches the team responsible for that section rather than everyone on the network."}},{"@type":"Question","name":"Does it help us decide where to clear?","acceptedAnswer":{"@type":"Answer","text":"Fire danger forecasting and burn history over the corridor show which stretches carry the load and which have regrown since the last fire, which is a better basis for a clearing programme than working the schedule in order."}},{"@type":"Question","name":"Can it feed our existing control room systems?","acceptedAnswer":{"@type":"Answer","text":"There is API access for integration into an existing GIS, so detections can appear alongside the rest of your network view rather than in a separate application."}},{"@type":"Question","name":"Is there hardware on the servitude?","acceptedAnswer":{"@type":"Answer","text":"None. Nothing to install along the route, nothing to power, and nothing worth stealing."}}]}
+]}
 </script>
 <link rel="preload" href="../assets/fonts/robotoflex-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/roboto-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -65,20 +66,62 @@
       <h2>The asset is the length of it</h2>
       <p>A network is hundreds of kilometres of servitude crossing ground that belongs to other people, much of it far from any depot. Inspection is periodic by necessity. Fire is not. Continuous thermal monitoring along the whole corridor closes the gap between one patrol and the next, without installing anything on the line.</p>
     </article>
+
     <article class="pblock reveal">
-      <h2>Fire near the line is an outage waiting to happen</h2>
-      <p>Smoke and flame under a conductor can trip a line long before anything is damaged, and a trip on a major feeder is a problem measured in customers rather than in hectares. Knowing early that something is burning near the servitude buys the time to act before it becomes a supply interruption.</p>
+      <h2>A trip is measured in customers, not hectares</h2>
+      <p>Smoke and flame under a conductor can trip a line long before anything is damaged. Ionised air and particulate across the phase gap is enough, and the fire does not need to touch the structure to take the feeder out. That is why fire risk on a network is not really a fire problem, it is a supply problem.</p>
+      <p>The cost of the event is set by what is downstream of the feeder rather than by how much veld burned. A fire that would be unremarkable on a farm is a different matter under a line that carries a town, a mine or a pump station.</p>
     </article>
+
+    <article class="pblock reveal">
+      <h2>You do not control the ignition source</h2>
+      <p>The servitude crosses other people's land. The fires that reach it are usually started by someone else, doing something ordinary and legal, on ground you have no say over. Agricultural burning, a firebreak that ran, a fire on a neighbouring property with its own reasons for being lit.</p>
+      <p>Which means the useful question is not what is burning on the servitude, it is what is burning near it and moving toward it. Detection across the wider area with spread modelling over the corridor answers that. Detection confined to the servitude itself answers it too late.</p>
+    </article>
+
+    <figure class="pfig reveal">
+      <img src="../assets/plat-spread.jpg" alt="Modelled fire spread bands running across valley terrain toward populated areas" loading="lazy" width="1600" height="951">
+      <figcaption>Modelled spread over real terrain. Under a line, the question is not where the fire is, it is which way it is going and when it arrives.</figcaption>
+    </figure>
+
     <article class="pblock reveal">
       <h2>Vegetation is the other half of the problem</h2>
       <p>Fire risk under a line is largely a function of what is growing there and how dry it is. Fire danger forecasting and burn history over the corridor tell you which stretches deserve the next clearing crew, which turns servitude maintenance from a fixed schedule into a prioritised one.</p>
+      <p>That matters because clearing budgets are finite and servitudes are not. A crew sent to the stretch that burned last season and has come back thick is worth more than the same crew working the schedule in order.</p>
     </article>
+
+    <article class="pblock reveal">
+      <h2>Patrols are already stretched</h2>
+      <p>Line inspection in South Africa competes with conductor theft, vandalism and infrastructure that needs attention for reasons that have nothing to do with fire. Adding a fire patrol to that list is not realistic on most networks, and it would still only cover the corridor at the moment the vehicle passes.</p>
+      <p>Monitoring from orbit does not compete for the same people. It also removes the temptation to put equipment out on the servitude, which on a rural line is equipment that will not be there in a year.</p>
+    </article>
+
+    <article class="pblock reveal">
+      <h2>Into the control room, not another screen</h2>
+      <p>Detections can push through the API into the systems your operators already watch, so a fire near a feeder appears where faults appear rather than in a separate application somebody has to remember to open. The monitored area is defined by your own shapefiles, which for a network means the corridor and a margin either side rather than a rectangle over the province.</p>
+      <p>Where your servitudes run through <a href="../forestry/">commercial plantations</a> or across land inside a <a href="../municipalities/">Fire Protection Association</a>, the same detections can be the picture everybody is working from.</p>
+    </article>
+  </section>
+
+  <section class="pfaq">
+    <div class="pfaq-inner">
+      <p class="kicker mono">STRAIGHT ANSWERS</p>
+      <h2>What Network Engineers Ask Us</h2>
+      <div class="faq-list">
+        <details class="reveal"><summary>How would we know about a fire near the line before it trips?</summary><p>Detection is on heat, across the corridor and the ground around it, rather than on the fault itself. Combined with spread modelling it gives you a fire that is approaching the servitude rather than a trip that has already happened.</p></details>
+        <details class="reveal"><summary>Can we monitor the whole servitude, or only substations?</summary><p>The whole route. The monitored area follows your shapefiles, so a corridor with a margin either side is a normal shape to monitor, and length is not the constraint it is for patrols.</p></details>
+        <details class="reveal"><summary>Can we get alerts per feeder or per region?</summary><p>Yes. Areas can be split so the alert reaches the team responsible for that section rather than everyone on the network.</p></details>
+        <details class="reveal"><summary>Does it help us decide where to clear?</summary><p>Fire danger forecasting and burn history over the corridor show which stretches carry the load and which have regrown since the last fire, which is a better basis for a clearing programme than working the schedule in order.</p></details>
+        <details class="reveal"><summary>Can it feed our existing control room systems?</summary><p>There is API access for integration into an existing GIS, so detections can appear alongside the rest of your network view rather than in a separate application.</p></details>
+        <details class="reveal"><summary>Is there hardware on the servitude?</summary><p>None. Nothing to install along the route, nothing to power, and nothing worth stealing.</p></details>
+      </div>
+    </div>
   </section>
 
   <section class="pcta">
     <div class="pcta-inner reveal">
       <p class="kicker mono">BOOK A LIVE DEMO</p>
-      <h2>See Your Whole Network At Once.</h2>
+      <h2>See Your Own Ground.</h2>
       <p class="lede">Send us the ground you are responsible for. We will run the platform over your actual coordinates and show you what the last fire season looked like from orbit.</p>
       <div class="pcta-row">
         <a class="btn btn-accent" href="../#demo">Book a live demo</a>

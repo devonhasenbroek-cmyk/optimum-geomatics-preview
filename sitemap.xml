@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://optimumgeomatics.co.za/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://optimumgeomatics.co.za/forestry/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://optimumgeomatics.co.za/conservation/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://optimumgeomatics.co.za/municipalities/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://optimumgeomatics.co.za/utilities/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://optimumgeomatics.co.za/insurance/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://optimumgeomatics.co.za/</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://optimumgeomatics.co.za/forestry/</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://optimumgeomatics.co.za/conservation/</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://optimumgeomatics.co.za/municipalities/</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://optimumgeomatics.co.za/utilities/</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://optimumgeomatics.co.za/insurance/</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

@@ -4,24 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://optimumgeomatics.co.za/forestry/">
-<title>Wildfire Detection For Plantations And Forestry | Optimum Geomatics</title>
-<meta name="description" content="Satellite wildfire detection for commercial forestry in Africa. Watch every compartment at once, day and night, through smoke and cloud.">
+<title>Wildfire Detection For Plantations | Optimum Geomatics</title>
+<meta name="description" content="Satellite wildfire detection for African commercial forestry. Watch every compartment at once, day and night, through smoke, with burn scar mapping afterwards.">
 <meta name="theme-color" content="#080d18">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23080d18'/%3E%3Ctext x='16' y='23' font-family='Roboto,Arial,sans-serif' font-size='21' font-weight='700' fill='%2338b6ff' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Wildfire Detection For Plantations And Forestry | Optimum Geomatics">
-<meta property="og:description" content="Satellite wildfire detection for commercial forestry in Africa. Watch every compartment at once, day and night, through smoke and cloud.">
+<meta property="og:title" content="Wildfire Detection For Plantations | Optimum Geomatics">
+<meta property="og:description" content="Satellite wildfire detection for African commercial forestry. Watch every compartment at once, day and night, through smoke, with burn scar mapping afterwards.">
 <meta property="og:url" content="https://optimumgeomatics.co.za/forestry/">
 <meta property="og:image" content="https://optimumgeomatics.co.za/assets/ind-forestry.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage",
- "url":"https://optimumgeomatics.co.za/forestry/","name":"Wildfire Detection For Plantations And Forestry | Optimum Geomatics","description":"Satellite wildfire detection for commercial forestry in Africa. Watch every compartment at once, day and night, through smoke and cloud.",
- "isPartOf":{"@type":"WebSite","url":"https://optimumgeomatics.co.za/"},
- "about":{"@type":"Service","name":"Every Compartment, Not Just The Ones You Can See.","provider":{"@type":"Organization","name":"Optimum Geomatics (PTY) Ltd","url":"https://optimumgeomatics.co.za/"}},
- "breadcrumb":{"@type":"BreadcrumbList","itemListElement":[
-   {"@type":"ListItem","position":1,"name":"Home","item":"https://optimumgeomatics.co.za/"},
-   {"@type":"ListItem","position":2,"name":"Forestry","item":"https://optimumgeomatics.co.za/forestry/"}]}}
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebPage","@id":"https://optimumgeomatics.co.za/forestry/#page","url":"https://optimumgeomatics.co.za/forestry/","name":"Wildfire Detection For Plantations | Optimum Geomatics","description":"Satellite wildfire detection for African commercial forestry. Watch every compartment at once, day and night, through smoke, with burn scar mapping afterwards.","inLanguage":"en","isPartOf":{"@id":"https://optimumgeomatics.co.za/#website"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://optimumgeomatics.co.za/assets/ind-forestry.jpg"},"about":{"@id":"https://optimumgeomatics.co.za/forestry/#service"}},
+{"@type":"Service","@id":"https://optimumgeomatics.co.za/forestry/#service","name":"Wildfire detection for commercial forestry","serviceType":"Wildfire detection and monitoring","areaServed":{"@type":"Place","name":"Africa"},"provider":{"@id":"https://optimumgeomatics.co.za/#org"},"description":"Satellite wildfire detection for African commercial forestry. Watch every compartment at once, day and night, through smoke, with burn scar mapping afterwards."},
+{"@type":"BreadcrumbList","@id":"https://optimumgeomatics.co.za/forestry/#crumbs","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Optimum Geomatics","item":"https://optimumgeomatics.co.za/"},
+{"@type":"ListItem","position":2,"name":"Forestry","item":"https://optimumgeomatics.co.za/forestry/"}]},
+{"@type":"FAQPage","@id":"https://optimumgeomatics.co.za/forestry/#faq","mainEntity":[{"@type":"Question","name":"How is this different to the lookout towers we already run?","acceptedAnswer":{"@type":"Answer","text":"A tower sees its viewshed, in daylight, while someone is in it. The satellite reads heat rather than smoke, over the whole estate, at night as well as during the day. Most growers keep both. The satellite covers the ground the towers cannot see, which on a large plantation is most of it."}},{"@type":"Question","name":"Will it pick up a fire in a young compartment?","acceptedAnswer":{"@type":"Answer","text":"Detection works on heat, not on canopy, so a fire in young trees or in slash is visible the same way a fire in mature timber is. What changes with stand age is how fast it runs and what it costs you, not whether it is seen."}},{"@type":"Question","name":"Can I limit alerts to my own plantation?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your shapefiles define the monitored area, so you are alerted for your ground and not for every burn in the district. That is the difference between a system your team trusts and one they mute."}},{"@type":"Question","name":"Does it work at night and through smoke?","acceptedAnswer":{"@type":"Answer","text":"Yes. Thermal infrared reads heat, so darkness makes no difference, and it sees through smoke that would blind a camera or a spotter. Heavy cloud is the honest limitation, and it is worth discussing against your own conditions."}},{"@type":"Question","name":"Does this replace our fire team?","acceptedAnswer":{"@type":"Answer","text":"No. It tells you where and when. Your people still decide what to do and still do it. What changes is that the decision starts with coordinates instead of with a phone call."}},{"@type":"Question","name":"What do we get after a fire for the insurance claim?","acceptedAnswer":{"@type":"Answer","text":"Burn scar mapping with severity classes, the timing of ignition and extinction, and the progression over time. It is produced independently of the claim, which is usually what the assessor wants."}}]}
+]}
 </script>
 <link rel="preload" href="../assets/fonts/robotoflex-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/roboto-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -65,20 +66,62 @@
       <h2>The gap is not detection, it is coverage</h2>
       <p>Most growers already run lookout towers, camera masts or a sensor network, and those work well where they point. The problem is what is left over. A plantation is measured in tens of thousands of hectares and the equipment covers a fraction of it, so the first report of a fire usually comes from whoever happened to be driving past. Thermal satellite monitoring does not care which ridge you instrumented.</p>
     </article>
+
     <article class="pblock reveal">
       <h2>A fire you find late is a compartment you lose</h2>
-      <p>Fire is the single largest cause of loss in commercial timber, and the difference between a contained fire and a lost compartment is measured in the first hour. An alert that reaches the right phone with coordinates on it, rather than a phone call describing a smoke column somewhere to the north, is what turns a scramble into a dispatch.</p>
+      <p>Fire is the largest single cause of loss in commercial timber, and the difference between a contained fire and a lost compartment is measured in the first hour. An alert that reaches the right phone with coordinates on it, rather than a phone call describing a smoke column somewhere to the north, is what turns a scramble into a dispatch.</p>
+      <p>The value at risk is not evenly spread either. A compartment approaching rotation age carries years of growth that cannot be replaced by replanting, and it is worth knowing which side of the fire it sits on before the crews are committed.</p>
     </article>
+
+    <article class="pblock reveal">
+      <h2>The season arrives on a calendar. The fire does not.</h2>
+      <p>You already know roughly when your season runs. In the summer rainfall regions the danger builds through the dry winter and peaks before the first rains break it. In the Western Cape it runs the other way, through the dry summer. You staff for that window every year.</p>
+      <p>What the calendar cannot tell you is which days inside the window actually matter. Fire danger forecasting over your own ground, built from wind, temperature, humidity and fuel moisture rather than from a regional average, separates the days that justify standby from the days that do not. That is a rostering decision as much as a fire one.</p>
+    </article>
+
+    <figure class="pfig reveal">
+      <img src="../assets/cust-merensky.jpg" alt="Aerial view of eucalyptus compartments of different ages separated by firebreak roads" loading="lazy" width="1800" height="1012">
+      <figcaption>Compartments of different ages, different fuel loads and different values, separated by firebreaks. The satellite reads all of them the same way.</figcaption>
+    </figure>
+
+    <article class="pblock reveal">
+      <h2>Your boundaries, not a rectangle drawn over the district</h2>
+      <p>The monitored area is defined by your own shapefiles, so it follows your estate rather than a map tile. That matters more than it sounds. A grower who monitors the district gets alerted every time a neighbour burns a firebreak, learns to ignore the alerts, and is not looking when one of them is on his own ground.</p>
+      <p>Alerts go to the people who act on them, through WhatsApp, SMS, email or the app, and the detections can push into the GIS you already run rather than living in a system nobody opens.</p>
+    </article>
+
+    <article class="pblock reveal">
+      <h2>Working inside the FPA system, not beside it</h2>
+      <p>South African forestry does not fight fire alone. The Fire Protection Association is the structure through which neighbours share resources, and the National Veld and Forest Fire Act puts duties on landowners around firebreaks and readiness, with consequences when a fire leaves your ground and reaches someone else's.</p>
+      <p>Two things follow from that. A record of when a fire started, where it started and which way it ran is not only an operational matter, it is the evidence you rely on afterwards. And a common view of what is burning, shared across members rather than held by one grower, is worth more than the same information held five times over. That is the same argument the <a href="../municipalities/">municipal and FPA side</a> makes from the other direction.</p>
+    </article>
+
     <article class="pblock reveal">
       <h2>Afterwards, you need a record</h2>
-      <p>When the fire is out, the argument starts. How much burned, how badly, where did it begin and how did it move. Burn scar and severity mapping gives you that as data rather than as recollection, which matters for the insurance claim, for the replant plan and for the conversation with your neighbours about how it started.</p>
+      <p>When the fire is out, the argument starts. How much burned, how badly, where did it begin and how did it move. Burn scar and severity mapping gives you that as data rather than as recollection, which matters for the replant plan and for the conversation with your neighbours about how it started.</p>
+      <p>It matters to your insurer too. An independent account of extent and severity, produced the same way every time, is a different kind of document to an assessment written by the party making the claim, and it tends to shorten the argument. That is covered on the <a href="../insurance/">insurance and risk</a> page.</p>
     </article>
+  </section>
+
+  <section class="pfaq">
+    <div class="pfaq-inner">
+      <p class="kicker mono">STRAIGHT ANSWERS</p>
+      <h2>What Growers Ask Us</h2>
+      <div class="faq-list">
+        <details class="reveal"><summary>How is this different to the lookout towers we already run?</summary><p>A tower sees its viewshed, in daylight, while someone is in it. The satellite reads heat rather than smoke, over the whole estate, at night as well as during the day. Most growers keep both. The satellite covers the ground the towers cannot see, which on a large plantation is most of it.</p></details>
+        <details class="reveal"><summary>Will it pick up a fire in a young compartment?</summary><p>Detection works on heat, not on canopy, so a fire in young trees or in slash is visible the same way a fire in mature timber is. What changes with stand age is how fast it runs and what it costs you, not whether it is seen.</p></details>
+        <details class="reveal"><summary>Can I limit alerts to my own plantation?</summary><p>Yes. Your shapefiles define the monitored area, so you are alerted for your ground and not for every burn in the district. That is the difference between a system your team trusts and one they mute.</p></details>
+        <details class="reveal"><summary>Does it work at night and through smoke?</summary><p>Yes. Thermal infrared reads heat, so darkness makes no difference, and it sees through smoke that would blind a camera or a spotter. Heavy cloud is the honest limitation, and it is worth discussing against your own conditions.</p></details>
+        <details class="reveal"><summary>Does this replace our fire team?</summary><p>No. It tells you where and when. Your people still decide what to do and still do it. What changes is that the decision starts with coordinates instead of with a phone call.</p></details>
+        <details class="reveal"><summary>What do we get after a fire for the insurance claim?</summary><p>Burn scar mapping with severity classes, the timing of ignition and extinction, and the progression over time. It is produced independently of the claim, which is usually what the assessor wants.</p></details>
+      </div>
+    </div>
   </section>
 
   <section class="pcta">
     <div class="pcta-inner reveal">
       <p class="kicker mono">BOOK A LIVE DEMO</p>
-      <h2>See What Your Estate Looks Like From Orbit.</h2>
+      <h2>See Your Own Ground.</h2>
       <p class="lede">Send us the ground you are responsible for. We will run the platform over your actual coordinates and show you what the last fire season looked like from orbit.</p>
       <div class="pcta-row">
         <a class="btn btn-accent" href="../#demo">Book a live demo</a>
