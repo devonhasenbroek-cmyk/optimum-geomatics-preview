@@ -545,6 +545,18 @@ onPageScroll();
 
 /* Swap a customer's type lockup for their official logo the moment the file exists.
    Nothing 404s in the meantime, and the row looks deliberate either way. */
+/* SMIL keeps running regardless of the motion setting, so stop it by hand. Paused at
+   the first frame the orbits still read as a constellation, just a still one. */
+(function orbitScene(){
+  var svg = document.querySelector(".orbit-scene");
+  if (!svg || !svg.pauseAnimations) return;
+  var rm = matchMedia("(prefers-reduced-motion: reduce)");
+  function apply(){ rm.matches ? svg.pauseAnimations() : svg.unpauseAnimations(); }
+  apply();
+  if (rm.addEventListener) rm.addEventListener("change", apply);
+  else if (rm.addListener) rm.addListener(apply);
+})();
+
 /* The coverage band plays only while it is on screen, and never for anyone who has asked
    for less motion. With preload="none" in the markup, a visitor who never scrolls that far
    never downloads it at all, and the poster frame covers every case where it does not run. */

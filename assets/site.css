@@ -437,7 +437,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 
 /* full-bleed image band: breaks the column rhythm so no two neighbours match */
 .bleed{margin:0;position:relative;overflow:hidden}
-.bleed img,.bleed video{width:100%;height:clamp(320px,52vh,600px);object-fit:cover;display:block;
+.bleed img,.bleed video,.bleed .orbit-scene{width:100%;height:clamp(320px,52vh,600px);object-fit:cover;display:block;
   background:var(--panel-2)}
 .bleed figcaption{position:absolute;left:0;right:0;bottom:0;
   padding:clamp(3rem,9vh,7rem) max(1.4rem,7vw) clamp(1.6rem,4vh,2.6rem);

@@ -250,7 +250,7 @@
       </article>
       <article class="cov reveal cov-ours">
         <h3>Thermal satellite</h3>
-        <p class="cov-good">Good at: watching the entire estate at once, through smoke and cloud, day and night.</p>
+        <p class="cov-good">Good at: watching the entire estate at once, through smoke, day and night.</p>
         <p class="cov-gap">Honest limit: it sees heat, not intent. It tells you where and when. Your people still decide what to do.</p>
       </article>
     </div>
@@ -417,7 +417,7 @@
       <h2>How an alert actually reaches you.</h2>
     </div>
     <ol class="chain-list">
-      <li class="reveal"><span class="mono chain-n">01</span><svg class="chain-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 9h4v6h-4z"/><path d="M3 10.5h6v3H3zM15 10.5h6v3h-6z"/><path d="M12 9V6.2"/><path d="M9.6 4.6a3.4 3.4 0 0 1 4.8 0"/></svg><h3>A satellite passes</h3><p>Thermal infrared, through smoke and cloud, several times an hour.</p></li>
+      <li class="reveal"><span class="mono chain-n">01</span><svg class="chain-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 9h4v6h-4z"/><path d="M3 10.5h6v3H3zM15 10.5h6v3h-6z"/><path d="M12 9V6.2"/><path d="M9.6 4.6a3.4 3.4 0 0 1 4.8 0"/></svg><h3>A satellite passes</h3><p>Thermal infrared, through smoke, several times an hour.</p></li>
       <li class="reveal"><span class="mono chain-n">02</span><svg class="chain-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 5h16.8l-6.4 7.4V19l-4 2v-8.6z"/></svg><h3>The heat signal is checked</h3><p>Algorithms strip out the flare stacks, the hot roofs and the sun glint before anyone is woken up.</p></li>
       <li class="reveal"><span class="mono chain-n">03</span><svg class="chain-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7.6" y="2.8" width="8.8" height="18.4" rx="2.2"/><path d="M10.6 18.4h2.8"/><path d="M4.4 9.6a4.2 4.2 0 0 0 0 4.8"/><path d="M19.6 9.6a4.2 4.2 0 0 1 0 4.8"/></svg><h3>Your phone goes</h3><p>WhatsApp, SMS, email or in app, within minutes, only for the areas you monitor.</p></li>
       <li class="reveal"><span class="mono chain-n">04</span><svg class="chain-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.2s6.6-6.1 6.6-10.6a6.6 6.6 0 1 0-13.2 0C5.4 15.1 12 21.2 12 21.2z"/><circle cx="12" cy="10.4" r="2.4"/></svg><h3>The coordinates open on a map</h3><p>Location, estimated size, and the terrain around it.</p></li>
@@ -432,7 +432,7 @@
   <section class="who" id="who">
     <div class="sec-head reveal">
       <p class="kicker mono">WHO THIS IS FOR</p>
-      <h2>If the ground is yours to answer for, it is yours to watch.</h2>
+      <h2>If the area is yours to manage, OroraTech is the tool to monitor it.</h2>
     </div>
     <ul class="who-grid">
       <li class="reveal"><a href="forestry/"><h3>Forestry and plantations</h3><p>Standing timber, compartment by compartment.</p><span class="who-go mono">Wildfire detection for plantations</span></a></li>
@@ -458,14 +458,75 @@
     </div>
   </section>
 
-  <!-- the cloud shot earns its place on its own: it is the one product claim a
-       photograph can make, and it kept the strongest image from the removed FAQ -->
+  <!-- The constellation, drawn rather than photographed: no stock image can honestly show a
+       revisit rate. Each orbit is one rotated-ellipse path, shared by the ring you see and the
+       animateMotion that carries the satellite along it, so a satellite is always exactly on
+       its own ring. Rings are drawn before the globe and satellites after, which gives depth
+       without clipping. Nesting the marker inside a squashed group instead would shear it at
+       every phase except 0 and 180 degrees. -->
   <figure class="bleed reveal">
-    <img src="assets/through-cloud.jpg" alt="A fire glowing up through an unbroken deck of cloud, seen from above" loading="lazy" width="1920" height="1071">
+    <svg class="orbit-scene" viewBox="0 0 1600 520" preserveAspectRatio="xMidYMid slice" role="img"
+         aria-label="A constellation of thermal satellites in low Earth orbit, circling the globe over Africa">
+      <defs>
+        <radialGradient id="og-space" cx="55%" cy="42%" r="78%">
+          <stop offset="0%" stop-color="#0d1626"/><stop offset="100%" stop-color="#05090f"/>
+        </radialGradient>
+        <radialGradient id="og-globe" cx="34%" cy="30%" r="78%">
+          <stop offset="0%" stop-color="#1b3f63"/><stop offset="55%" stop-color="#102a45"/>
+          <stop offset="100%" stop-color="#081726"/>
+        </radialGradient>
+        <radialGradient id="og-limb" cx="50%" cy="50%" r="50%">
+          <stop offset="84%" stop-color="#38b6ff" stop-opacity="0"/>
+          <stop offset="97%" stop-color="#38b6ff" stop-opacity=".32"/>
+          <stop offset="100%" stop-color="#38b6ff" stop-opacity="0"/>
+        </radialGradient>
+        <clipPath id="og-clip"><circle cx="880" cy="250" r="150"/></clipPath>
+        <path id="og-orbitA" d="M641.7 332 A252 65.5 -19 1 0 1118.3 168 A252 65.5 -19 1 0 641.7 332 Z"/>
+        <path id="og-orbitB" d="M578.9 180.5 A309 58.7 13 1 0 1181.1 319.5 A309 58.7 13 1 0 578.9 180.5 Z"/>
+        <path id="og-orbitC" d="M752.5 425.6 A217 71.6 -54 1 0 1007.5 74.4 A217 71.6 -54 1 0 752.5 425.6 Z"/>
+      </defs>
+
+      <rect width="1600" height="520" fill="url(#og-space)"/>
+      <g class="og-stars"><circle cx="955" cy="156" r="1.30" fill="#cfe6ff" opacity="0.48"/><circle cx="1075" cy="275" r="1.66" fill="#cfe6ff" opacity="0.45"/><circle cx="119" cy="519" r="0.93" fill="#cfe6ff" opacity="0.17"/><circle cx="1588" cy="31" r="1.12" fill="#cfe6ff" opacity="0.11"/><circle cx="115" cy="350" r="1.72" fill="#cfe6ff" opacity="0.41"/><circle cx="1186" cy="33" r="1.38" fill="#cfe6ff" opacity="0.29"/><circle cx="326" cy="464" r="0.78" fill="#cfe6ff" opacity="0.41"/><circle cx="234" cy="14" r="1.49" fill="#cfe6ff" opacity="0.38"/><circle cx="1381" cy="425" r="1.62" fill="#cfe6ff" opacity="0.38"/><circle cx="58" cy="176" r="0.87" fill="#cfe6ff" opacity="0.35"/><circle cx="613" cy="156" r="1.57" fill="#cfe6ff" opacity="0.22"/><circle cx="1399" cy="290" r="0.92" fill="#cfe6ff" opacity="0.28"/><circle cx="918" cy="216" r="1.03" fill="#cfe6ff" opacity="0.42"/><circle cx="961" cy="184" r="1.49" fill="#cfe6ff" opacity="0.32"/><circle cx="639" cy="298" r="0.96" fill="#cfe6ff" opacity="0.13"/><circle cx="946" cy="273" r="1.20" fill="#cfe6ff" opacity="0.21"/><circle cx="723" cy="41" r="1.55" fill="#cfe6ff" opacity="0.18"/><circle cx="193" cy="442" r="1.36" fill="#cfe6ff" opacity="0.33"/><circle cx="1492" cy="129" r="1.23" fill="#cfe6ff" opacity="0.25"/><circle cx="1011" cy="354" r="0.95" fill="#cfe6ff" opacity="0.17"/><circle cx="988" cy="0" r="1.01" fill="#cfe6ff" opacity="0.40"/><circle cx="1226" cy="225" r="1.10" fill="#cfe6ff" opacity="0.29"/><circle cx="406" cy="152" r="1.63" fill="#cfe6ff" opacity="0.21"/><circle cx="952" cy="31" r="1.66" fill="#cfe6ff" opacity="0.36"/><circle cx="718" cy="91" r="1.61" fill="#cfe6ff" opacity="0.21"/><circle cx="354" cy="237" r="1.55" fill="#cfe6ff" opacity="0.24"/><circle cx="2" cy="219" r="0.82" fill="#cfe6ff" opacity="0.48"/><circle cx="444" cy="300" r="1.35" fill="#cfe6ff" opacity="0.44"/><circle cx="1154" cy="507" r="0.98" fill="#cfe6ff" opacity="0.19"/><circle cx="793" cy="205" r="1.56" fill="#cfe6ff" opacity="0.29"/><circle cx="1510" cy="405" r="1.25" fill="#cfe6ff" opacity="0.45"/><circle cx="623" cy="304" r="1.68" fill="#cfe6ff" opacity="0.28"/><circle cx="540" cy="387" r="1.69" fill="#cfe6ff" opacity="0.43"/><circle cx="289" cy="128" r="1.07" fill="#cfe6ff" opacity="0.12"/></g>
+
+      <!-- rings, behind the planet so the globe occludes them -->
+      <g fill="none" stroke="#38b6ff" stroke-opacity=".26" stroke-width="1.4">
+        <use href="#og-orbitA"/><use href="#og-orbitB"/><use href="#og-orbitC"/>
+      </g>
+
+      <circle cx="880" cy="250" r="150" fill="url(#og-globe)"/>
+      <g clip-path="url(#og-clip)" fill="none" stroke="#5fc8ff" stroke-opacity=".20" stroke-width="1">
+        <circle cx="880" cy="250" r="150"/>
+        <ellipse cx="880" cy="250" rx="150" ry="47"/>
+        <ellipse cx="880" cy="250" rx="150" ry="98"/>
+        <ellipse cx="880" cy="250" rx="47" ry="150"/>
+        <ellipse cx="880" cy="250" rx="98" ry="150"/>
+        <path d="M730 250h300"/>
+      </g>
+      <!-- Africa, simplified: this is a South African product and the globe should say so -->
+      <g clip-path="url(#og-clip)">
+        <path transform="translate(797 145) scale(1.85)"
+              d="M14 6 Q36 2 58 4 Q66 6 70 16 Q82 26 92 34 Q80 38 76 42 Q74 48 74 56
+                 Q70 66 68 74 Q64 84 60 92 Q54 102 48 108 Q42 100 40 94 Q34 84 32 74
+                 Q30 64 30 56 Q26 52 24 50 Q18 48 12 48 Q6 44 2 40 Q3 32 4 26 Q8 14 14 6 Z"
+              fill="#3fa9e8" fill-opacity=".22" stroke="#8fdcff" stroke-opacity=".34" stroke-width=".8"/>
+      </g>
+      <circle cx="880" cy="250" r="150" fill="url(#og-limb)"/>
+
+      <!-- satellites, in front, each riding its own ring -->
+      <g class="og-sats">
+        <g><circle r="10" fill="#38b6ff" opacity=".18"/><circle r="4.6" fill="#38b6ff"/>
+          <animateMotion dur="26s" repeatCount="indefinite" begin="0s"><mpath href="#og-orbitA"/></animateMotion></g>
+        <g><circle r="9" fill="#7ad4ff" opacity=".16"/><circle r="4.2" fill="#7ad4ff"/>
+          <animateMotion dur="34s" repeatCount="indefinite" begin="-13s"><mpath href="#og-orbitB"/></animateMotion></g>
+        <g><circle r="10" fill="#38b6ff" opacity=".18"/><circle r="4.6" fill="#38b6ff"/>
+          <animateMotion dur="21s" repeatCount="indefinite" begin="-15s"><mpath href="#og-orbitC"/></animateMotion></g>
+      </g>
+    </svg>
     <figcaption>
-      <span class="bleed-cap"><span class="mono">THROUGH THE CLOUD</span>
-      A fire burning under an unbroken cloud deck. From the ground this is a weather
-      report. From orbit it is a detection.</span>
+      <span class="bleed-cap"><span class="mono">SEVERAL PASSES AN HOUR</span>
+      Thermal sensors in low Earth orbit, crossing your ground again and again. Not one
+      look a day. A look, then another, then another.</span>
     </figcaption>
   </figure>
 
