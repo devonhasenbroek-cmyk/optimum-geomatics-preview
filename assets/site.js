@@ -519,6 +519,26 @@ onPageScroll();
 
 /* Swap a customer's type lockup for their official logo the moment the file exists.
    Nothing 404s in the meantime, and the row looks deliberate either way. */
+/* The coverage band plays only while it is on screen, and never for anyone who has asked
+   for less motion. With preload="none" in the markup, a visitor who never scrolls that far
+   never downloads it at all, and the poster frame covers every case where it does not run. */
+(function bandVideo(){
+  var v = document.querySelector(".bleed video");
+  if (!v || !("IntersectionObserver" in window)) return;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  /* Phones keep the poster. Half a megabyte of decoration is not worth it on the mobile
+     data our customers are actually using in the field. Delete this line to play it there. */
+  if (matchMedia("(max-width: 760px)").matches) return;
+  new IntersectionObserver(function (entries) {
+    Array.prototype.forEach.call(entries, function (e) {
+      if (!e.isIntersecting) { v.pause(); return; }
+      v.preload = "auto";
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});   /* autoplay refused: poster stays, no error */
+    });
+  }, { rootMargin: "200px 0px" }).observe(v);
+})();
+
 (function trustLogos(){
   Array.prototype.forEach.call(document.querySelectorAll('.trust-item[data-logo]'), function (li) {
     var src = li.getAttribute('data-logo');

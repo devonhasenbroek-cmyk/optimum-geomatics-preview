@@ -256,7 +256,14 @@
   </section>
 
   <figure class="bleed reveal">
-    <img src="assets/coverage-fynbos.jpg" alt="Aerial view of steep fynbos-covered mountains running down to the Atlantic near Cape Town" loading="lazy" width="1920" height="1080">
+    <!-- Decorative flyover loop. No autoplay attribute on purpose: site.js starts it only
+         when the band scrolls into view and only when motion is welcome, and preload="none"
+         keeps the file off the wire until then. The poster is frame one, so nothing shifts. -->
+    <video class="bleed-video" poster="assets/coverage-flyover.jpg" width="1280" height="426"
+           muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+      <source src="assets/coverage-flyover.webm" type="video/webm">
+      <source src="assets/coverage-flyover.mp4" type="video/mp4">
+    </video>
     <figcaption>
       <span class="bleed-cap"><span class="mono">PAST THE LAST MAST</span>
       A fire that starts here is not detected late. It is not detected at all, until the
