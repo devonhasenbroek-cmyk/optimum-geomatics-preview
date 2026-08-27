@@ -307,8 +307,21 @@ section > .who-grid,.scan-stage{width:var(--wrap);margin-inline:auto}
 .chain-n{position:absolute;left:2.2rem;top:.1em;color:var(--signal);opacity:.5}
 .chain-list h3{margin-bottom:.4rem}
 .chain-list p{color:var(--text-2);font-size:.98rem}
-.chain-line{position:absolute;left:calc(50% - 410px + 15px);top:0;width:2px;height:100%;color:var(--signal-dim);
-  pointer-events:none}
+.chain-line{position:absolute;left:calc(50% - min(var(--wrap),820px)/2 + 15px);top:0;width:2px;height:100%;
+  color:var(--signal-dim);pointer-events:none}
+
+/* the pulse riding the drawn end of the rail, and the glyph that lights as it arrives */
+.chain-tip{position:absolute;left:calc(50% - min(var(--wrap),820px)/2 + 11px);top:0;width:10px;height:10px;
+  border-radius:50%;background:var(--signal);opacity:0;pointer-events:none;
+  box-shadow:0 0 14px 3px var(--signal-dim);transform:translateY(-50%)}
+.chain-ico{position:absolute;right:0;top:-.15em;width:34px;height:34px;color:var(--signal);
+  opacity:.16;transform:translateY(5px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.chain-list li.lit .chain-ico{opacity:.8;transform:none}
+.chain-list li.lit::before{background:var(--signal);box-shadow:0 0 10px 1px var(--signal-dim)}
+.chain-list li.lit .chain-n{opacity:1}
+.chain-list li::before,.chain-n{transition:background .45s var(--ease),box-shadow .45s var(--ease),opacity .45s var(--ease)}
+@media (max-width:640px){.chain-ico{display:none}}
+@media (prefers-reduced-motion:reduce){.chain-tip{display:none}}
 .chain-line path{stroke-dasharray:800;stroke-dashoffset:calc(800 - 800*var(--draw,0))}
 
 /* 6.7 who: a plain list of rules, no cards at all */

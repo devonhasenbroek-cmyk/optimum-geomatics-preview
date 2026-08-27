@@ -364,11 +364,36 @@ if ('IntersectionObserver' in window) {
 /* the self-drawing alert chain line */
 var chain = document.querySelector('.chain');
 var chainLine = document.querySelector('.chain-line');
+var chainTip = document.querySelector('.chain-tip');
+var chainSteps = Array.prototype.slice.call(document.querySelectorAll('.chain-list li'));
+var chainReduce = matchMedia("(prefers-reduced-motion: reduce)");
 function drawChain() {
   if (!chain || !chainLine) return;
+  /* pinToFinalStates only runs on a live change of the setting, never at load, so a
+     visitor who arrives with reduced motion already on would still watch the line
+     draw itself down the page. Pin it here instead: finished, and never animated. */
+  if (chainReduce.matches) {
+    chainLine.style.setProperty("--draw", "1");
+    if (chainTip) chainTip.style.opacity = "0";
+    for (var k = 0; k < chainSteps.length; k++) chainSteps[k].classList.add("lit");
+    return;
+  }
   var r = chain.getBoundingClientRect();
   var p = clamp((window.innerHeight * 0.8 - r.top) / (r.height * 0.75), 0, 1);
   chainLine.style.setProperty('--draw', p.toFixed(3));
+
+  /* the drawn end, in px down the section */
+  var head = p * r.height;
+  if (chainTip) {
+    chainTip.style.top = head.toFixed(1) + 'px';
+    /* fade in as it leaves the top, out again as it lands */
+    chainTip.style.opacity = (p > 0.02 && p < 0.98) ? '0.9' : '0';
+  }
+  for (var i = 0; i < chainSteps.length; i++) {
+    var li = chainSteps[i];
+    var lit = head >= (li.getBoundingClientRect().top + 8 - r.top);
+    if (lit !== li.classList.contains('lit')) li.classList.toggle('lit', lit);
+  }
 }
 
 /* counters, written only on change */
@@ -448,6 +473,7 @@ function pinToFinalStates() {
     el.style.transitionDelay = '0ms';
   });
   if (chainLine) chainLine.style.setProperty('--draw', '1');
+  chainSteps.forEach(function (li) { li.classList.add('lit'); });
   counters.forEach(function (c) {
     c.run = true;
     var s = c.to + c.suffix;
