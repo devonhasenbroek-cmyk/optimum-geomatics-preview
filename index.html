@@ -295,7 +295,7 @@
       </li>
     </ul>
     <div class="cust-grid">
-      <article class="cust cust-hero reveal">
+      <article class="cust reveal">
         <div class="cust-media"><img src="assets/cust-kruger.jpg" alt="Kruger National Park lowveld at low golden light" loading="lazy" width="1600" height="900"></div>
         <div class="cust-body">
           <h3>Kruger National Park</h3>
@@ -349,31 +349,6 @@
       <li class="reveal"><span class="scale-n mono">170+</span><span class="scale-l">people across 5 continents</span></li>
     </ul>
     <p class="scale-src mono">Source: OroraTech, August 2026</p>
-  </section>
-
-  <!-- 6.4 the interactive moment -->
-  <section class="scan" id="scan">
-    <div class="sec-head reveal">
-      <p class="kicker mono">TRY IT</p>
-      <h2>Hold to scan.</h2>
-      <p class="lede">This is a plantation at night, in ordinary light. Press and hold, and look again.</p>
-    </div>
-    <div class="scan-stage reveal">
-      <div class="scan-plate">
-        <img class="scan-vis" src="assets/scan-visible.jpg" alt="Plantation at night in visible light" loading="lazy" width="1600" height="900">
-        <img class="scan-ir" src="assets/scan-thermal.jpg" alt="" aria-hidden="true" loading="lazy" width="1600" height="900">
-        <svg class="scan-ret" viewBox="0 0 200 200" aria-hidden="true">
-          <rect x="80" y="80" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2"/>
-          <path d="M74 86V74h12M126 74h-12v12M126 114v12h-12M86 126H74v-12" fill="none" stroke="currentColor" stroke-width="2.4"/>
-        </svg>
-        <p class="scan-readout mono chip"><span class="sr-coord">--.----&deg; S  --.----&deg; E</span><span class="sr-size">4 10 &times; 10 mtimes; 4 m</span><span class="sr-age">0 min ago</span></p>
-      </div>
-      <button class="scan-btn" type="button" aria-describedby="scan-help">
-        <span class="scan-fill" aria-hidden="true"></span>
-        <span class="scan-label">Hold to scan</span>
-      </button>
-      <p class="scan-done" id="scan-help" role="status">Three heat signatures. None of them visible from the road.</p>
-    </div>
   </section>
 
   <!-- 6.5 the platform -->
@@ -481,9 +456,11 @@
           <stop offset="100%" stop-color="#38b6ff" stop-opacity="0"/>
         </radialGradient>
         <clipPath id="og-clip"><circle cx="880" cy="250" r="150"/></clipPath>
-        <path id="og-orbitA" d="M641.7 332 A252 65.5 -19 1 0 1118.3 168 A252 65.5 -19 1 0 641.7 332 Z"/>
-        <path id="og-orbitB" d="M578.9 180.5 A309 58.7 13 1 0 1181.1 319.5 A309 58.7 13 1 0 578.9 180.5 Z"/>
-        <path id="og-orbitC" d="M752.5 425.6 A217 71.6 -54 1 0 1007.5 74.4 A217 71.6 -54 1 0 752.5 425.6 Z"/>
+        <path id="og-o0" d="M758.3 417.5 A207 70.4 -54 1 0 1001.7 82.5 A207 70.4 -54 1 0 758.3 417.5 Z"/>
+        <path id="og-o1" d="M641.7 332 A252 65.5 -19 1 0 1118.3 168 A252 65.5 -19 1 0 641.7 332 Z"/>
+        <path id="og-o2" d="M666.4 64.3 A283 84.9 41 1 0 1093.6 435.7 A283 84.9 41 1 0 666.4 64.3 Z"/>
+        <path id="og-o3" d="M578.9 180.5 A309 58.7 13 1 0 1181.1 319.5 A309 58.7 13 1 0 578.9 180.5 Z"/>
+        <path id="og-o4" d="M775.9 570.5 A337 80.9 -72 1 0 984.1 -70.5 A337 80.9 -72 1 0 775.9 570.5 Z"/>
       </defs>
 
       <rect width="1600" height="520" fill="url(#og-space)"/>
@@ -491,7 +468,7 @@
 
       <!-- rings, behind the planet so the globe occludes them -->
       <g fill="none" stroke="#38b6ff" stroke-opacity=".26" stroke-width="1.4">
-        <use href="#og-orbitA"/><use href="#og-orbitB"/><use href="#og-orbitC"/>
+        <use href="#og-o0"/><use href="#og-o1"/><use href="#og-o2"/><use href="#og-o3"/><use href="#og-o4"/>
       </g>
 
       <circle cx="880" cy="250" r="150" fill="url(#og-globe)"/>
@@ -515,17 +492,46 @@
 
       <!-- satellites, in front, each riding its own ring -->
       <g class="og-sats">
-        <g><circle r="10" fill="#38b6ff" opacity=".18"/><circle r="4.6" fill="#38b6ff"/>
-          <animateMotion dur="26s" repeatCount="indefinite" begin="0s"><mpath href="#og-orbitA"/></animateMotion></g>
-        <g><circle r="9" fill="#7ad4ff" opacity=".16"/><circle r="4.2" fill="#7ad4ff"/>
-          <animateMotion dur="34s" repeatCount="indefinite" begin="-13s"><mpath href="#og-orbitB"/></animateMotion></g>
-        <g><circle r="10" fill="#38b6ff" opacity=".18"/><circle r="4.6" fill="#38b6ff"/>
-          <animateMotion dur="21s" repeatCount="indefinite" begin="-15s"><mpath href="#og-orbitC"/></animateMotion></g>
+        <g><circle r="7.5" fill="#7ad4ff" opacity=".15"/><circle r="3.4" fill="#7ad4ff"/><animateMotion dur="21s" repeatCount="indefinite" begin="0s"><mpath href="#og-o0"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="21s" repeatCount="indefinite" begin="-3s"><mpath href="#og-o0"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="21s" repeatCount="indefinite" begin="-6s"><mpath href="#og-o0"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="21s" repeatCount="indefinite" begin="-9s"><mpath href="#og-o0"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="21s" repeatCount="indefinite" begin="-12s"><mpath href="#og-o0"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="21s" repeatCount="indefinite" begin="-15s"><mpath href="#og-o0"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="21s" repeatCount="indefinite" begin="-18s"><mpath href="#og-o0"/></animateMotion></g>
+        <g><circle r="7.5" fill="#7ad4ff" opacity=".15"/><circle r="3.4" fill="#7ad4ff"/><animateMotion dur="26s" repeatCount="indefinite" begin="0s"><mpath href="#og-o1"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="26s" repeatCount="indefinite" begin="-3.71s"><mpath href="#og-o1"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="26s" repeatCount="indefinite" begin="-7.43s"><mpath href="#og-o1"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="26s" repeatCount="indefinite" begin="-11.14s"><mpath href="#og-o1"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="26s" repeatCount="indefinite" begin="-14.86s"><mpath href="#og-o1"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="26s" repeatCount="indefinite" begin="-18.57s"><mpath href="#og-o1"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="26s" repeatCount="indefinite" begin="-22.29s"><mpath href="#og-o1"/></animateMotion></g>
+        <g><circle r="7.5" fill="#7ad4ff" opacity=".15"/><circle r="3.4" fill="#7ad4ff"/><animateMotion dur="30s" repeatCount="indefinite" begin="0s"><mpath href="#og-o2"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="30s" repeatCount="indefinite" begin="-4.29s"><mpath href="#og-o2"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="30s" repeatCount="indefinite" begin="-8.57s"><mpath href="#og-o2"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="30s" repeatCount="indefinite" begin="-12.86s"><mpath href="#og-o2"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="30s" repeatCount="indefinite" begin="-17.14s"><mpath href="#og-o2"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="30s" repeatCount="indefinite" begin="-21.43s"><mpath href="#og-o2"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="30s" repeatCount="indefinite" begin="-25.71s"><mpath href="#og-o2"/></animateMotion></g>
+        <g><circle r="7.5" fill="#7ad4ff" opacity=".15"/><circle r="3.4" fill="#7ad4ff"/><animateMotion dur="34s" repeatCount="indefinite" begin="0s"><mpath href="#og-o3"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="34s" repeatCount="indefinite" begin="-4.86s"><mpath href="#og-o3"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="34s" repeatCount="indefinite" begin="-9.71s"><mpath href="#og-o3"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="34s" repeatCount="indefinite" begin="-14.57s"><mpath href="#og-o3"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="34s" repeatCount="indefinite" begin="-19.43s"><mpath href="#og-o3"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="34s" repeatCount="indefinite" begin="-24.29s"><mpath href="#og-o3"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="34s" repeatCount="indefinite" begin="-29.14s"><mpath href="#og-o3"/></animateMotion></g>
+        <g><circle r="7.5" fill="#7ad4ff" opacity=".15"/><circle r="3.4" fill="#7ad4ff"/><animateMotion dur="38s" repeatCount="indefinite" begin="0s"><mpath href="#og-o4"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="38s" repeatCount="indefinite" begin="-5.43s"><mpath href="#og-o4"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="38s" repeatCount="indefinite" begin="-10.86s"><mpath href="#og-o4"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="38s" repeatCount="indefinite" begin="-16.29s"><mpath href="#og-o4"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="38s" repeatCount="indefinite" begin="-21.71s"><mpath href="#og-o4"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="38s" repeatCount="indefinite" begin="-27.14s"><mpath href="#og-o4"/></animateMotion></g>
+        <g><circle r="5.4" fill="#38b6ff" opacity=".15"/><circle r="2.5" fill="#38b6ff"/><animateMotion dur="38s" repeatCount="indefinite" begin="-32.57s"><mpath href="#og-o4"/></animateMotion></g>
       </g>
     </svg>
     <figcaption>
       <span class="bleed-cap"><span class="mono">SEVERAL DAILY PASSES</span>
-      World-leading situational awareness for your monitored areas.</span>
+      World-Leading Situational Awareness For Your Monitored Areas.</span>
     </figcaption>
   </figure>
 

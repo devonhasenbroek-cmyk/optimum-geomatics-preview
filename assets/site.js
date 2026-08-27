@@ -425,46 +425,6 @@ if ('IntersectionObserver' in window) {
 }
 
 /* ------------------------------------------------------------------ *
- * the one interactive moment: press and hold to scan
- * ------------------------------------------------------------------ */
-var scanFinish = null;
-(function scanMoment() {
-  var stageEl = document.querySelector('.scan-stage');
-  var btn = document.querySelector('.scan-btn');
-  if (!stageEl || !btn) return;
-  var p = 0, holding = false, raf = null, last = 0, done = false;
-  var label = btn.querySelector('.scan-label');
-
-  function frame(now) {
-    var dt = Math.min(60, now - (last || now));
-    last = now;
-    // once the scan completes it stays complete: the visitor earned it
-    p = done ? 1 : clamp(p + (holding ? dt / 1500 : -dt / 900), 0, 1);
-    stageEl.style.setProperty('--p', p.toFixed(3));
-    if (p >= 1 && !done) {
-      done = true;
-      if (label) label.textContent = 'Scan complete';
-    }
-    if (p < 1 && !done && label && p < 0.02) label.textContent = 'Hold to scan';
-    if ((holding && p < 1) || (!holding && p > 0)) { raf = requestAnimationFrame(frame); }
-    else { raf = null; last = 0; }
-  }
-  function start(e) { if (e.type === 'keydown' && e.key !== ' ' && e.key !== 'Enter') return; holding = true; if (!raf) raf = requestAnimationFrame(frame); e.preventDefault(); }
-  function stop() { holding = false; if (!raf) raf = requestAnimationFrame(frame); }
-
-  ['mousedown', 'touchstart', 'keydown'].forEach(function (t) { btn.addEventListener(t, start, { passive: false }); });
-  ['mouseup', 'mouseleave', 'touchend', 'touchcancel', 'keyup', 'blur'].forEach(function (t) { btn.addEventListener(t, stop); });
-
-  scanFinish = function () {
-    holding = false; done = true; p = 1;
-    if (raf) { cancelAnimationFrame(raf); raf = null; }
-    stageEl.style.setProperty('--p', '1');
-    if (label) label.textContent = 'Scan complete';
-  };
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) scanFinish();
-})();
-
-/* ------------------------------------------------------------------ *
  * reduced motion, honoured live, in both directions
  * ------------------------------------------------------------------ */
 function pinToFinalStates() {
@@ -479,7 +439,6 @@ function pinToFinalStates() {
     var s = c.to + c.suffix;
     if (s !== c.last) { c.last = s; c.el.textContent = s; }
   });
-  if (typeof scanFinish === 'function' && scanFinish) scanFinish();
   document.body.classList.add('pinned');
 }
 function unpinFinalStates() {
