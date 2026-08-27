@@ -289,7 +289,7 @@ section > .who-grid,.scan-stage{width:var(--wrap);margin-inline:auto}
   opacity:calc(clamp(0,(var(--p,0) - .92)*12,1));transition:opacity .4s var(--ease)}
 
 /* 6.5 platform: numbered media cards, different skeleton to 6.4 */
-.mod-grid{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:2.4rem}
+.mod-grid{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));margin-top:2.4rem}
 .mod{background:var(--panel-2);border:1px solid var(--panel-line);border-radius:4px;padding:0 0 1.6rem;
   overflow:hidden}
 .mod-shot{aspect-ratio:16/10;background:var(--panel);border-bottom:1px solid var(--panel-line);overflow:hidden}
@@ -410,7 +410,12 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   text-transform:uppercase;color:var(--text-2);text-align:center;line-height:1.5;
   transition:color .4s var(--ease)}
 .trust-item:hover .trust-name{color:var(--text)}
-.trust-item img{max-height:46px;width:auto;object-fit:contain}
+/* Logos arrive tightly trimmed, so cap both axes: stacked marks (SANParks, WWF)
+   land on max-height, wide lockups (Merensky) land on max-width. Held slightly
+   back from full white so they sit level with the surrounding type. */
+.trust-item img{max-height:64px;max-width:min(76%,196px);width:auto;height:auto;object-fit:contain;
+  opacity:.78;transition:opacity .4s var(--ease)}
+.trust-item:hover img{opacity:1}
 
 /* module captions and the wide fire-spread card */
 .mod-cap{padding:.9rem 1.4rem 0;color:var(--signal);opacity:.72;font-size:.62rem}

@@ -272,20 +272,17 @@
       <h2>Already watching, right now.</h2>
     </div>
 
-    <!-- LOGO SLOTS: to switch a name for its official logo, save the file as
-         assets/logo-kruger.png (or logo-wwf.png / logo-merensky.png) AND add
-         data-logo="assets/logo-kruger.png" to that li. The swap is automatic.
-         Old note: drop the official files in as assets/logo-kruger.png,
-         assets/logo-wwf.png and assets/logo-merensky.png and they replace the
-         type lockups automatically. Each needs the customer's written permission. -->
+    <!-- LOGO SLOTS: official logos, reversed to mono white for the dark panel.
+         data-logo swaps the type lockup for the image once the file loads; drop the
+         attribute to fall back to the name. Each is used with the customer's permission. -->
     <ul class="trust reveal" aria-label="Customers">
-      <li class="trust-item">
-        <span class="trust-name">Kruger National Park</span>
+      <li class="trust-item" data-logo="assets/logo-sanparks.png">
+        <span class="trust-name">South African National Parks</span>
       </li>
-      <li class="trust-item">
+      <li class="trust-item" data-logo="assets/logo-wwf.png">
         <span class="trust-name">WWF Zambia</span>
       </li>
-      <li class="trust-item">
+      <li class="trust-item" data-logo="assets/logo-merensky.png">
         <span class="trust-name">Merensky Timbers</span>
       </li>
     </ul>
@@ -395,6 +392,12 @@
         <p class="mono mod-n">03</p><h3>Fire spread</h3>
         <p>Where the front is likely to run next, up to 24 hours ahead, from the weather, the terrain and the fuel it is moving through.</p>
         <p class="mod-cap mono">FIRE SPREAD MODEL &middot; STELLENBOSCH TO FRANSCHHOEK</p>
+      </article>
+      <article class="mod reveal">
+        <div class="mod-shot"><img src="assets/plat-burnt.jpg" alt="Burn scar outlines over the Franschhoek valley, shaded by severity class" loading="lazy" width="1600" height="727"></div>
+        <p class="mono mod-n">04</p><h3>Burnt area</h3>
+        <p>Burn scar and severity mapping, five severity classes, delivered automatically two to three days after the fire is out.</p>
+        <p class="mod-cap mono">BURNT AREA &middot; HIGH RESOLUTION</p>
       </article>
     </div>
   </section>
